@@ -269,6 +269,77 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Converter',
     keywords: ['byte', 'size', 'kb', 'mb', 'gb', 'tb', 'convert', 'storage'],
   },
+  {
+    id: 'image-base64',
+    name: 'Image to Base64',
+    description: 'Convert images to Base64 encoded strings and data URLs',
+    category: 'Converter',
+    keywords: ['image', 'base64', 'data url', 'convert', 'encode', 'picture'],
+  },
+  {
+    id: 'markdown-html',
+    name: 'Markdown → HTML Converter',
+    description: 'Convert Markdown to clean HTML',
+    category: 'Converter',
+    keywords: ['markdown', 'html', 'convert', 'md', 'render'],
+  },
+
+  // Formatter Tools (continued)
+  {
+    id: 'ts-formatter',
+    name: 'TypeScript Formatter',
+    description: 'Format and beautify TypeScript code',
+    category: 'Formatter',
+    keywords: ['typescript', 'ts', 'format', 'beautify', 'indent', 'minify'],
+  },
+  {
+    id: 'yaml-formatter',
+    name: 'YAML Formatter',
+    description: 'Format and beautify YAML with validation',
+    category: 'Formatter',
+    keywords: ['yaml', 'yml', 'format', 'beautify', 'indent', 'minify'],
+  },
+
+  // Web Tools (continued)
+  {
+    id: 'http-status',
+    name: 'HTTP Status Code Reference',
+    description: 'Quick reference for HTTP status codes with descriptions and use cases',
+    category: 'Web',
+    keywords: ['http', 'status', 'code', 'reference', 'error', 'response'],
+  },
+
+  // Security Tools (continued)
+  {
+    id: 'jwt-generator',
+    name: 'JWT Generator',
+    description: 'Generate JSON Web Tokens with custom claims',
+    category: 'Security',
+    keywords: ['jwt', 'token', 'generate', 'json', 'web', 'auth', 'signature'],
+  },
+
+  // Developer Reference Tools
+  {
+    id: 'ascii-table',
+    name: 'ASCII Table Reference',
+    description: 'Complete ASCII character reference table',
+    category: 'Utility',
+    keywords: ['ascii', 'character', 'reference', 'table', 'code', 'decimal', 'hex'],
+  },
+  {
+    id: 'git-cheat',
+    name: 'Git Cheat Sheet',
+    description: 'Quick reference for common Git commands',
+    category: 'Utility',
+    keywords: ['git', 'cheat sheet', 'reference', 'commands', 'version control'],
+  },
+  {
+    id: 'regex-cheat',
+    name: 'Regex Cheat Sheet',
+    description: 'Quick reference for regular expression syntax',
+    category: 'Utility',
+    keywords: ['regex', 'regular expression', 'cheat sheet', 'reference', 'pattern'],
+  },
 ]
 
 export const categories = [...new Set(toolDefinitions.map((t) => t.category))]

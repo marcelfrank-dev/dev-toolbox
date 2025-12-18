@@ -57,6 +57,23 @@ const toolComponents: Record<string, ComponentType> = {
   // Converter Tools
   'number-base': dynamic(() => import('./number-base/NumberBaseConverter'), { ssr: false }),
   'byte-size': dynamic(() => import('./byte-size/ByteSizeConverter'), { ssr: false }),
+  'image-base64': dynamic(() => import('./image-base64/ImageToBase64'), { ssr: false }),
+  'markdown-html': dynamic(() => import('./markdown-html/MarkdownToHtml'), { ssr: false }),
+
+  // Formatter Tools (continued)
+  'ts-formatter': dynamic(() => import('./ts-formatter/TsFormatter'), { ssr: false }),
+  'yaml-formatter': dynamic(() => import('./yaml-formatter/YamlFormatter'), { ssr: false }),
+
+  // Web Tools (continued)
+  'http-status': dynamic(() => import('./http-status/HttpStatusReference'), { ssr: false }),
+
+  // Security Tools (continued)
+  'jwt-generator': dynamic(() => import('./jwt-generator/JwtGenerator'), { ssr: false }),
+
+  // Developer Reference Tools
+  'ascii-table': dynamic(() => import('./ascii-table/AsciiTable'), { ssr: false }),
+  'git-cheat': dynamic(() => import('./git-cheat/GitCheatSheet'), { ssr: false }),
+  'regex-cheat': dynamic(() => import('./regex-cheat/RegexCheatSheet'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions.map((def) => ({

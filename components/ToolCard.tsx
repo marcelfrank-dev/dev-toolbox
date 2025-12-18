@@ -13,6 +13,11 @@ const categoryColors: Record<string, string> = {
   Text: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   Web: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
   Security: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+  Generator: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+  Formatter: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
+  Converter: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
+  Utility: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+  Hash: 'bg-pink-500/10 text-pink-400 border-pink-500/20',
 }
 
 export function ToolCard({ tool, onClick }: ToolCardProps) {

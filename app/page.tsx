@@ -4,10 +4,11 @@ import { useState, useEffect, useMemo } from 'react'
 import { tools } from '@/tools/registry'
 import { categories } from '@/tools/definitions'
 import { Tool } from '@/tools/types'
-import { ToolCard } from '@/components/ToolCard'
 import { ToolModal } from '@/components/ToolModal'
 import { SearchBar } from '@/components/SearchBar'
 import { CategoryFilter } from '@/components/CategoryFilter'
+import { CategorySection } from '@/components/CategorySection'
+import { ToolCard } from '@/components/ToolCard'
 import { getToolFromUrl, setToolInUrl, updateMetaTags } from '@/lib/urlState'
 
 export default function Home() {
@@ -76,50 +77,130 @@ export default function Home() {
     })
   }, [searchQuery, selectedCategory])
 
+  // Group filtered tools by category
+  const toolsByCategory = useMemo(() => {
+    const grouped: Record<string, Tool[]> = {}
+    filteredTools.forEach((tool) => {
+      if (!grouped[tool.category]) {
+        grouped[tool.category] = []
+      }
+      grouped[tool.category].push(tool)
+    })
+    return grouped
+  }, [filteredTools])
+
+  const hasActiveFilters = searchQuery || selectedCategory
+
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Header */}
-        <header className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl">
-            Dev Toolbox
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-zinc-400">
-            A collection of free, fast developer tools that run entirely in your browser.
-            No data ever leaves your machine.
-          </p>
-        </header>
+      {/* Sticky Header */}
+      <div className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          {/* Header */}
+          <header className="mb-6 text-center">
+            <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+              Dev Toolbox
+            </h1>
+            <p className="mx-auto max-w-2xl text-sm text-zinc-400 sm:text-base">
+              A collection of free, fast developer tools that run entirely in your browser.
+              No data ever leaves your machine.
+            </p>
+            {!hasActiveFilters && (
+              <p className="mt-2 text-sm text-zinc-500">
+                {tools.length} tools available across {categories.length} categories
+              </p>
+            )}
+          </header>
 
-        {/* Search and Filter */}
-        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="w-full sm:max-w-md">
-            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+          {/* Search and Filter */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="w-full sm:max-w-md">
+              <SearchBar value={searchQuery} onChange={setSearchQuery} />
+            </div>
+            <CategoryFilter
+              categories={categories}
+              selected={selectedCategory}
+              onChange={setSelectedCategory}
+            />
           </div>
-          <CategoryFilter
-            categories={categories}
-            selected={selectedCategory}
-            onChange={setSelectedCategory}
-          />
+
+          {/* Results Summary */}
+          {hasActiveFilters && (
+            <div className="mt-4 flex items-center justify-between text-sm text-zinc-400">
+              <span>
+                {filteredTools.length} tool{filteredTools.length !== 1 ? 's' : ''} found
+                {selectedCategory && ` in ${selectedCategory}`}
+                {searchQuery && ` matching "${searchQuery}"`}
+              </span>
+              <button
+                onClick={() => {
+                  setSearchQuery('')
+                  setSelectedCategory(null)
+                }}
+                className="text-emerald-400 hover:text-emerald-300 underline"
+              >
+                Clear filters
+              </button>
+            </div>
+          )}
         </div>
+      </div>
 
-        {/* Tools Grid */}
+      {/* Main Content */}
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {filteredTools.length > 0 ? (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredTools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} onClick={() => openTool(tool)} />
-            ))}
-          </div>
+          hasActiveFilters ? (
+            // When filters are active, show flat grid
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredTools.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} onClick={() => openTool(tool)} />
+              ))}
+            </div>
+          ) : (
+            // When no filters, show organized by category
+            <div>
+              {categories
+                .filter((category) => toolsByCategory[category]?.length > 0)
+                .map((category) => (
+                  <CategorySection
+                    key={category}
+                    category={category}
+                    tools={toolsByCategory[category] || []}
+                    defaultExpanded={true}
+                    onToolClick={openTool}
+                  />
+                ))}
+            </div>
+          )
         ) : (
           <div className="flex flex-col items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/30 py-16">
-            <p className="text-lg text-zinc-500">No tools found</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="mb-4 text-zinc-600"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <p className="text-lg font-medium text-zinc-400">No tools found</p>
+            <p className="mt-2 text-sm text-zinc-500">
+              Try adjusting your search or category filter
+            </p>
             <button
               onClick={() => {
                 setSearchQuery('')
                 setSelectedCategory(null)
               }}
-              className="mt-4 text-sm text-zinc-400 underline hover:text-zinc-200"
+              className="mt-6 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-500"
             >
-              Clear filters
+              Clear all filters
             </button>
           </div>
         )}
