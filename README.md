@@ -81,6 +81,7 @@ Legend: ✅ Available | 🚧 Planned
 | Tool | Description | Status |
 |------|-------------|:------:|
 | JWT Decoder | Decode and inspect JSON Web Tokens | ✅ |
+| JWT Generator | Generate JSON Web Tokens with custom claims | ✅ |
 | Hash Generator | Generate SHA-256, SHA-512, SHA-1 hashes | ✅ |
 | HMAC Generator | Generate HMAC signatures | ✅ |
 | Password Strength Checker | Analyze password strength and entropy | 🚧 |
@@ -100,6 +101,12 @@ Legend: ✅ Available | 🚧 Planned
 | UUID Generator | Generate UUID v4 (random) or v1 (timestamp) | ✅ |
 | Password Generator | Generate secure random passwords | ✅ |
 | QR Code Generator | Generate QR codes from text or URLs | ✅ |
+| .gitignore Generator | Generate .gitignore files for languages and frameworks | ✅ |
+| README Generator | Generate README.md files with templates | ✅ |
+| Favicon Generator | Generate favicon sets from an image | ✅ |
+| Box-Shadow Generator | Generate CSS box-shadow visually | ✅ |
+| Flexbox Playground | Visual playground for CSS Flexbox | ✅ |
+| CSS Grid Generator | Visual CSS Grid layout generator | ✅ |
 | Barcode Generator | Generate various barcode formats | 🚧 |
 | Fake Data Generator | Generate fake names, emails, addresses | 🚧 |
 | Random Number Generator | Generate random numbers with options | 🚧 |
@@ -120,7 +127,7 @@ Legend: ✅ Available | 🚧 Planned
 |------|-------------|:------:|
 | Timestamp Converter | Convert Unix timestamps to dates and vice versa | ✅ |
 | Color Converter | Convert between HEX, RGB, HSL, HSV | ✅ |
-| HTTP Status Code Reference | Quick reference for HTTP status codes | 🚧 |
+| HTTP Status Code Reference | Quick reference for HTTP status codes | ✅ |
 | HTTP Header Parser | Parse and analyze HTTP headers | 🚧 |
 | Cookie Parser / Builder | Parse and build HTTP cookies | 🚧 |
 | User Agent Parser | Decode and analyze user agent strings | 🚧 |
@@ -128,7 +135,7 @@ Legend: ✅ Available | 🚧 Planned
 | Meta Tag Generator | Generate meta tags for SEO | 🚧 |
 | Sitemap Generator | Generate XML sitemaps | 🚧 |
 | Robots.txt Generator | Generate robots.txt files | 🚧 |
-| Favicon Generator | Create favicons from images | 🚧 |
+| Favicon Generator | Create favicons from images | ✅ |
 | SVG Optimizer | Optimize and minify SVG files | 🚧 |
 | Cron Expression Parser | Parse cron expressions to human readable | 🚧 |
 | Timezone Converter | Convert times between timezones | 🚧 |
@@ -142,8 +149,8 @@ Legend: ✅ Available | 🚧 Planned
 | JavaScript Formatter | Format and beautify JavaScript | ✅ |
 | SQL Formatter | Format and beautify SQL queries | ✅ |
 | XML Formatter | Format and beautify XML | ✅ |
-| TypeScript Formatter | Format and beautify TypeScript | 🚧 |
-| YAML Formatter | Format and beautify YAML | 🚧 |
+| TypeScript Formatter | Format and beautify TypeScript | ✅ |
+| YAML Formatter | Format and beautify YAML | ✅ |
 | TOML Formatter | Format and beautify TOML | 🚧 |
 | GraphQL Formatter | Format and beautify GraphQL | 🚧 |
 | PHP Formatter | Format and beautify PHP | 🚧 |
@@ -159,11 +166,12 @@ Legend: ✅ Available | 🚧 Planned
 | JSON ↔ CSV Converter | Convert JSON arrays to/from CSV | ✅ |
 | Number Base Converter | Binary, octal, decimal, hexadecimal | ✅ |
 | Byte/Size Converter | Convert KB, MB, GB, TB, etc. | ✅ |
+| Image to Base64 | Convert images to Base64 encoded strings | ✅ |
+| Markdown → HTML | Convert Markdown to HTML | ✅ |
 | Unix Permissions (Chmod) | Calculate chmod values | 🚧 |
 | Temperature Converter | Celsius, Fahrenheit, Kelvin | 🚧 |
 | Length Converter | Meters, feet, inches, etc. | 🚧 |
 | Weight Converter | Kilograms, pounds, ounces, etc. | 🚧 |
-| Markdown → HTML | Convert Markdown to HTML | 🚧 |
 | HTML → Markdown | Convert HTML to Markdown | 🚧 |
 | CSV → Markdown Table | Convert CSV to Markdown tables | 🚧 |
 | TSV ↔ CSV Converter | Convert between TSV and CSV | 🚧 |
@@ -177,16 +185,19 @@ Legend: ✅ Available | 🚧 Planned
 
 | Tool | Description | Status |
 |------|-------------|:------:|
-| ASCII Table | Complete ASCII character reference | 🚧 |
+| ASCII Table Reference | Complete ASCII character reference table | ✅ |
+| HTML Entities Reference | Comprehensive list of HTML entities with names, numeric codes, and characters | ✅ |
+| CSS Units Reference | Reference for CSS units (px, em, rem, vw, vh, etc.) with descriptions | ✅ |
+| Keyboard Event Codes Reference | Reference for JavaScript keyboard event codes with interactive testing | ✅ |
+| MIME Type Reference | Comprehensive list of MIME types with file extensions and descriptions | ✅ |
+| Color Names Reference | All 140+ named CSS colors with HEX, RGB, and HSL values | ✅ |
+| Regex Cheat Sheet | Quick reference for regular expression syntax | ✅ |
+| Git Cheat Sheet | Quick reference for common Git commands | ✅ |
 | Unicode Character Search | Search and browse Unicode characters | 🚧 |
 | Emoji Picker | Search and copy emojis | 🚧 |
-| HTML Entities Reference | Complete HTML entities reference | 🚧 |
-| Regex Cheat Sheet | Quick reference for regex syntax | 🚧 |
-| Git Cheat Sheet | Common Git commands reference | 🚧 |
 | Vim Cheat Sheet | Vim commands reference | 🚧 |
 | Linux Commands Cheat Sheet | Common Linux commands | 🚧 |
 | HTTP Methods Reference | GET, POST, PUT, DELETE, etc. | 🚧 |
-| MIME Types Reference | Common MIME types lookup | 🚧 |
 | Keyboard Shortcuts | IDE & terminal shortcuts | 🚧 |
 
 ---
