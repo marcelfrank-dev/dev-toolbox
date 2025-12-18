@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { Tool } from '@/tools/types'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://dev-toolbox.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://tiny-dev-tools.vercel.app'
 
 export function generateToolMetadata(tool: Tool): Metadata {
   return {
