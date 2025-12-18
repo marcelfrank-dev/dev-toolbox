@@ -42,6 +42,12 @@ const toolComponents: Record<string, ComponentType> = {
   'uuid-generator': dynamic(() => import('./uuid/UuidGenerator'), { ssr: false }),
   'password': dynamic(() => import('./password/PasswordGenerator'), { ssr: false }),
   'qrcode': dynamic(() => import('./qrcode/QrCodeGenerator'), { ssr: false }),
+  'gitignore-generator': dynamic(() => import('./gitignore/GitignoreGenerator'), { ssr: false }),
+  'readme-generator': dynamic(() => import('./readme/ReadmeGenerator'), { ssr: false }),
+  'favicon-generator': dynamic(() => import('./favicon/FaviconGenerator'), { ssr: false }),
+  'box-shadow-generator': dynamic(() => import('./box-shadow/BoxShadowGenerator'), { ssr: false }),
+  'flexbox-playground': dynamic(() => import('./flexbox/FlexboxPlayground'), { ssr: false }),
+  'css-grid-generator': dynamic(() => import('./css-grid/CssGridGenerator'), { ssr: false }),
 
   // Web Tools
   'timestamp': dynamic(() => import('./timestamp/TimestampConverter'), { ssr: false }),
