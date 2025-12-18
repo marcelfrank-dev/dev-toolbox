@@ -80,6 +80,11 @@ const toolComponents: Record<string, ComponentType> = {
   'ascii-table': dynamic(() => import('./ascii-table/AsciiTable'), { ssr: false }),
   'git-cheat': dynamic(() => import('./git-cheat/GitCheatSheet'), { ssr: false }),
   'regex-cheat': dynamic(() => import('./regex-cheat/RegexCheatSheet'), { ssr: false }),
+  'html-entities': dynamic(() => import('./html-entities/HtmlEntitiesReference'), { ssr: false }),
+  'css-units': dynamic(() => import('./css-units/CssUnitsReference'), { ssr: false }),
+  'keyboard-codes': dynamic(() => import('./keyboard-codes/KeyboardCodesReference'), { ssr: false }),
+  'mime-types': dynamic(() => import('./mime-types/MimeTypesReference'), { ssr: false }),
+  'color-names': dynamic(() => import('./color-names/ColorNamesReference'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions.map((def) => ({

@@ -18,6 +18,7 @@ const categoryColors: Record<string, string> = {
   Converter: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
   Utility: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
   Hash: 'bg-pink-500/10 text-pink-400 border-pink-500/20',
+  'Developer Reference': 'bg-slate-500/10 text-slate-400 border-slate-500/20',
 }
 
 export function ToolCard({ tool, onClick }: ToolCardProps) {

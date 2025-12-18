@@ -10,6 +10,7 @@ export type ToolCategory =
   | 'Formatter'
   | 'Converter'
   | 'Utility'
+  | 'Developer Reference'
 
 export interface Tool {
   id: string
