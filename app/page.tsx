@@ -106,59 +106,97 @@ export default function Home() {
     <>
       {/* Sticky Header */}
       <div className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm transition-all duration-300">
-        <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? 'py-3' : 'py-6'}`}>
-          {/* Header */}
-          <header className={`text-center transition-all duration-300 ${isScrolled ? 'mb-3' : 'mb-6'}`}>
-            <h1 className={`font-bold tracking-tight text-zinc-100 transition-all duration-300 ${isScrolled ? 'mb-1 text-xl sm:text-2xl' : 'mb-2 text-3xl sm:text-4xl'}`}>
-              Dev Toolbox
-            </h1>
-            {!isScrolled && (
-              <>
-                <p className="mx-auto max-w-2xl text-sm text-zinc-400 sm:text-base">
-                  A collection of free, fast developer tools that run entirely in your browser.
-                  No data ever leaves your machine.
-                </p>
-                {!hasActiveFilters && (
-                  <p className="mt-2 text-sm text-zinc-500">
-                    {tools.length} tools available across {categories.length} categories
-                  </p>
-                )}
-              </>
+        {isScrolled ? (
+          // Compact single-row layout when scrolled
+          <div className="mx-auto max-w-7xl px-4 py-2.5 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-4">
+              {/* Compact Title */}
+              <h1 className="shrink-0 text-lg font-bold tracking-tight text-zinc-100 sm:text-xl">
+                Dev Toolbox
+              </h1>
+              {/* Search Bar */}
+              <div className="flex-1 min-w-0">
+                <SearchBar value={searchQuery} onChange={setSearchQuery} />
+              </div>
+              {/* Category Filters */}
+              <div className="shrink-0 hidden sm:block">
+                <CategoryFilter
+                  categories={categories}
+                  selected={selectedCategory}
+                  onChange={setSelectedCategory}
+                />
+              </div>
+            </div>
+            {/* Results Summary - below on mobile when scrolled */}
+            {hasActiveFilters && (
+              <div className="mt-2 flex items-center justify-between text-xs text-zinc-400 sm:hidden">
+                <span>
+                  {filteredTools.length} tool{filteredTools.length !== 1 ? 's' : ''} found
+                </span>
+                <button
+                  onClick={() => {
+                    setSearchQuery('')
+                    setSelectedCategory(null)
+                  }}
+                  className="text-emerald-400 hover:text-emerald-300 underline"
+                >
+                  Clear
+                </button>
+              </div>
             )}
-          </header>
-
-          {/* Search and Filter */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="w-full sm:max-w-md">
-              <SearchBar value={searchQuery} onChange={setSearchQuery} />
-            </div>
-            <CategoryFilter
-              categories={categories}
-              selected={selectedCategory}
-              onChange={setSelectedCategory}
-            />
           </div>
+        ) : (
+          // Full layout when at top
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            {/* Header */}
+            <header className="mb-6 text-center">
+              <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+                Dev Toolbox
+              </h1>
+              <p className="mx-auto max-w-2xl text-sm text-zinc-400 sm:text-base">
+                A collection of free, fast developer tools that run entirely in your browser.
+                No data ever leaves your machine.
+              </p>
+              {!hasActiveFilters && (
+                <p className="mt-2 text-sm text-zinc-500">
+                  {tools.length} tools available across {categories.length} categories
+                </p>
+              )}
+            </header>
 
-          {/* Results Summary */}
-          {hasActiveFilters && (
-            <div className="mt-4 flex items-center justify-between text-sm text-zinc-400">
-              <span>
-                {filteredTools.length} tool{filteredTools.length !== 1 ? 's' : ''} found
-                {selectedCategory && ` in ${selectedCategory}`}
-                {searchQuery && ` matching "${searchQuery}"`}
-              </span>
-              <button
-                onClick={() => {
-                  setSearchQuery('')
-                  setSelectedCategory(null)
-                }}
-                className="text-emerald-400 hover:text-emerald-300 underline"
-              >
-                Clear filters
-              </button>
+            {/* Search and Filter */}
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="w-full sm:max-w-md">
+                <SearchBar value={searchQuery} onChange={setSearchQuery} />
+              </div>
+              <CategoryFilter
+                categories={categories}
+                selected={selectedCategory}
+                onChange={setSelectedCategory}
+              />
             </div>
-          )}
-        </div>
+
+            {/* Results Summary */}
+            {hasActiveFilters && (
+              <div className="mt-4 flex items-center justify-between text-sm text-zinc-400">
+                <span>
+                  {filteredTools.length} tool{filteredTools.length !== 1 ? 's' : ''} found
+                  {selectedCategory && ` in ${selectedCategory}`}
+                  {searchQuery && ` matching "${searchQuery}"`}
+                </span>
+                <button
+                  onClick={() => {
+                    setSearchQuery('')
+                    setSelectedCategory(null)
+                  }}
+                  className="text-emerald-400 hover:text-emerald-300 underline"
+                >
+                  Clear filters
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Main Content */}
