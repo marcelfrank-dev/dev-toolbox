@@ -15,6 +15,17 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [activeTool, setActiveTool] = useState<Tool | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Handle URL-based tool opening
   useEffect(() => {
@@ -94,21 +105,25 @@ export default function Home() {
   return (
     <>
       {/* Sticky Header */}
-      <div className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-sm transition-all duration-300">
+        <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 transition-all duration-300 ${isScrolled ? 'py-3' : 'py-6'}`}>
           {/* Header */}
-          <header className="mb-6 text-center">
-            <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
+          <header className={`text-center transition-all duration-300 ${isScrolled ? 'mb-3' : 'mb-6'}`}>
+            <h1 className={`font-bold tracking-tight text-zinc-100 transition-all duration-300 ${isScrolled ? 'mb-1 text-xl sm:text-2xl' : 'mb-2 text-3xl sm:text-4xl'}`}>
               Dev Toolbox
             </h1>
-            <p className="mx-auto max-w-2xl text-sm text-zinc-400 sm:text-base">
-              A collection of free, fast developer tools that run entirely in your browser.
-              No data ever leaves your machine.
-            </p>
-            {!hasActiveFilters && (
-              <p className="mt-2 text-sm text-zinc-500">
-                {tools.length} tools available across {categories.length} categories
-              </p>
+            {!isScrolled && (
+              <>
+                <p className="mx-auto max-w-2xl text-sm text-zinc-400 sm:text-base">
+                  A collection of free, fast developer tools that run entirely in your browser.
+                  No data ever leaves your machine.
+                </p>
+                {!hasActiveFilters && (
+                  <p className="mt-2 text-sm text-zinc-500">
+                    {tools.length} tools available across {categories.length} categories
+                  </p>
+                )}
+              </>
             )}
           </header>
 
