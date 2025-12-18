@@ -50,7 +50,7 @@ export default function MarkdownToHtml() {
       // Lists
       result = result.replace(/^\* (.*$)/gim, '<li>$1</li>')
       result = result.replace(/^- (.*$)/gim, '<li>$1</li>')
-      result = result.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+      result = result.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>')
 
       // Wrap in paragraph if not already wrapped
       if (!result.startsWith('<')) {
