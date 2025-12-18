@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { toolDefinitions } from '@/tools/definitions'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dev-toolbox-livid.vercel.app'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://tiny-dev-tools.vercel.app'
 
   // Main page
   const routes: MetadataRoute.Sitemap = [
