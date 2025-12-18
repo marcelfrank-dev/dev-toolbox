@@ -8,7 +8,7 @@ import { ToolCard } from '@/components/ToolCard'
 import { ToolModal } from '@/components/ToolModal'
 import { SearchBar } from '@/components/SearchBar'
 import { CategoryFilter } from '@/components/CategoryFilter'
-import { getToolFromUrl, setToolInUrl, updateDocumentTitle } from '@/lib/urlState'
+import { getToolFromUrl, setToolInUrl, updateMetaTags } from '@/lib/urlState'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -22,7 +22,7 @@ export default function Home() {
       const tool = tools.find((t) => t.id === toolId)
       if (tool) {
         setActiveTool(tool)
-        updateDocumentTitle(tool.name)
+        updateMetaTags(tool)
       }
     }
 
@@ -32,10 +32,10 @@ export default function Home() {
       if (toolId) {
         const tool = tools.find((t) => t.id === toolId)
         setActiveTool(tool || null)
-        updateDocumentTitle(tool?.name || null)
+        updateMetaTags(tool || null)
       } else {
         setActiveTool(null)
-        updateDocumentTitle(null)
+        updateMetaTags(null)
       }
     }
 
@@ -46,13 +46,13 @@ export default function Home() {
   const openTool = (tool: Tool) => {
     setActiveTool(tool)
     setToolInUrl(tool.id)
-    updateDocumentTitle(tool.name)
+    updateMetaTags(tool)
   }
 
   const closeTool = () => {
     setActiveTool(null)
     setToolInUrl(null)
-    updateDocumentTitle(null)
+    updateMetaTags(null)
   }
 
   const filteredTools = useMemo(() => {

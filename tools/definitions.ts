@@ -51,6 +51,13 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Web',
     keywords: ['timestamp', 'unix', 'date', 'time', 'convert', 'epoch'],
   },
+  {
+    id: 'uuid-generator',
+    name: 'UUID Generator',
+    description: 'Generate random UUIDs (v4) or timestamp-based UUIDs',
+    category: 'Generator',
+    keywords: ['uuid', 'guid', 'generate', 'random', 'unique', 'identifier', 'v4', 'v1'],
+  },
 ]
 
 export const categories = [...new Set(toolDefinitions.map((t) => t.category))]

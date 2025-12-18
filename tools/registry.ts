@@ -13,6 +13,7 @@ const toolComponents: Record<string, ComponentType> = {
   'case-converter': dynamic(() => import('./case/CaseConverter'), { ssr: false }),
   'jwt-decoder': dynamic(() => import('./jwt/JwtDecoder'), { ssr: false }),
   'timestamp': dynamic(() => import('./timestamp/TimestampConverter'), { ssr: false }),
+  'uuid-generator': dynamic(() => import('./uuid/UuidGenerator'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions.map((def) => ({
