@@ -66,7 +66,6 @@ const toolComponents: Record<string, ComponentType> = {
   'sri': dynamic(() => import('./sri/SriGenerator'), { ssr: false }),
   'cors': dynamic(() => import('./cors/CorsHeaderGenerator'), { ssr: false }),
   'csp': dynamic(() => import('./csp/CspHeaderGenerator'), { ssr: false }),
-  'password-strength': dynamic(() => import('./password-strength/PasswordStrengthChecker'), { ssr: false }),
   'bcrypt': dynamic(() => import('./bcrypt/BcryptHashGenerator'), { ssr: false }),
   'aes': dynamic(() => import('./aes/AesEncryptDecrypt'), { ssr: false }),
   'rsa': dynamic(() => import('./rsa/RsaKeyGenerator'), { ssr: false }),
@@ -125,9 +124,6 @@ const toolComponents: Record<string, ComponentType> = {
   'properties-json': dynamic(() => import('./properties-json/PropertiesJsonConverter'), { ssr: false }),
   'image-format': dynamic(() => import('./image-format/ImageFormatConverter'), { ssr: false }),
   'svg-optimizer': dynamic(() => import('./svg-optimizer/SvgOptimizer'), { ssr: false }),
-  'length': dynamic(() => import('./length/LengthConverter'), { ssr: false }),
-  'weight': dynamic(() => import('./weight/WeightConverter'), { ssr: false }),
-  'epoch': dynamic(() => import('./epoch/EpochConverter'), { ssr: false }),
 
   // Formatter Tools (continued)
   'ts-formatter': dynamic(() => import('./ts-formatter/TsFormatter'), { ssr: false }),

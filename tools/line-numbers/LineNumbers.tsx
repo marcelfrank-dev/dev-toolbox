@@ -121,19 +121,19 @@ export default function LineNumbers() {
                 onClick={() => setFormat('{n}: ')}
                 className="hover:text-zinc-300"
               >
-                {n}: 
+                {'{n}'}: 
               </button>
               <button
                 onClick={() => setFormat('{n}. ')}
                 className="hover:text-zinc-300"
               >
-                {n}. 
+                {'{n}'}. 
               </button>
               <button
                 onClick={() => setFormat('{n} - ')}
                 className="hover:text-zinc-300"
               >
-                {n} - 
+                {'{n}'} - 
               </button>
             </div>
           </div>
