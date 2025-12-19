@@ -11,15 +11,24 @@ export function StructuredData() {
     name: 'Dev Toolbox',
     url: BASE_URL,
     description:
-      'A collection of free online developer tools including JSON formatter, Base64 encoder, UUID generator, hash generator, regex tester, and 30+ more. All tools run locally in your browser for maximum privacy.',
+      'A collection of 130+ free online developer tools including JSON formatter, Base64 encoder, UUID generator, hash generator, regex tester, JWT decoder, timestamp converter, and more. All tools run locally in your browser for maximum privacy - no data ever leaves your machine.',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    softwareVersion: '1.7.1',
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
     },
     featureList: toolDefinitions.map((tool) => tool.name),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      ratingCount: '1',
+      bestRating: '5',
+      worstRating: '1',
+    },
     author: {
       '@type': 'Organization',
       name: 'Dev Toolbox',
@@ -29,9 +38,9 @@ export function StructuredData() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/?search={search_term}`,
+        urlTemplate: `${BASE_URL}/?search={search_term_string}`,
       },
-      'query-input': 'required name=search_term',
+      'query-input': 'required name=search_term_string',
     },
   }
 

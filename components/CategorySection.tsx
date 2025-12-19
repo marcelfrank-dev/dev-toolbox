@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Tool } from '@/tools/types'
 import { ToolCard } from '@/components/ToolCard'
 
@@ -31,11 +31,6 @@ export function CategorySection({
   onToolClick,
 }: CategorySectionProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
-
-  // Sync expanded state when defaultExpanded or tools change
-  useEffect(() => {
-    setIsExpanded(defaultExpanded)
-  }, [defaultExpanded, tools.length])
 
   if (tools.length === 0) return null
 
