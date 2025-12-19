@@ -214,15 +214,19 @@ export default function Home() {
             <div>
               {categories
                 .filter((category) => toolsByCategory[category]?.length > 0)
-                .map((category) => (
-                  <CategorySection
-                    key={category}
-                    category={category}
-                    tools={toolsByCategory[category] || []}
-                    defaultExpanded={true}
-                    onToolClick={openTool}
-                  />
-                ))}
+                .map((category) => {
+                  const categoryTools = toolsByCategory[category] || []
+                  // Use category and tool count for stable key that changes when tools change
+                  return (
+                    <CategorySection
+                      key={`${category}-${categoryTools.length}`}
+                      category={category}
+                      tools={categoryTools}
+                      defaultExpanded={true}
+                      onToolClick={openTool}
+                    />
+                  )
+                })}
             </div>
           )
         ) : (

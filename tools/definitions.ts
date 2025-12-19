@@ -388,13 +388,6 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['csp', 'content security policy', 'header', 'generate', 'security'],
   },
   {
-    id: 'password-strength',
-    name: 'Password Strength Checker',
-    description: 'Check password strength and get feedback',
-    category: 'Security',
-    keywords: ['password', 'strength', 'check', 'security', 'validate'],
-  },
-  {
     id: 'bcrypt',
     name: 'Bcrypt Hash Generator',
     description: 'Generate bcrypt password hashes',
@@ -716,27 +709,6 @@ export const toolDefinitions: ToolDefinition[] = [
     description: 'Convert between image formats (PNG, JPEG, WebP)',
     category: 'Converter',
     keywords: ['image', 'format', 'convert', 'png', 'jpeg', 'webp'],
-  },
-  {
-    id: 'length',
-    name: 'Length Converter',
-    description: 'Convert between length units',
-    category: 'Converter',
-    keywords: ['length', 'distance', 'meter', 'kilometer', 'mile', 'inch', 'convert'],
-  },
-  {
-    id: 'weight',
-    name: 'Weight Converter',
-    description: 'Convert between weight units',
-    category: 'Converter',
-    keywords: ['weight', 'mass', 'kilogram', 'pound', 'gram', 'convert'],
-  },
-  {
-    id: 'epoch',
-    name: 'Epoch Converter',
-    description: 'Convert between Unix timestamps and dates',
-    category: 'Converter',
-    keywords: ['epoch', 'timestamp', 'unix', 'date', 'time', 'convert'],
   },
   {
     id: 'svg-optimizer',
