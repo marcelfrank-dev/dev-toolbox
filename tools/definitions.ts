@@ -718,6 +718,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['image', 'format', 'convert', 'png', 'jpeg', 'webp'],
   },
   {
+    id: 'aspect-ratio',
+    name: 'Aspect Ratio Calculator',
+    description: 'Calculate aspect ratios and find matching dimensions for images',
+    category: 'Converter',
+    keywords: ['aspect ratio', 'image ratio', 'dimensions', 'width', 'height', '16:9', '4:3', '1:1', 'calculate', 'resize', 'proportions'],
+  },
+  {
     id: 'length',
     name: 'Length Converter',
     description: 'Convert between length units',

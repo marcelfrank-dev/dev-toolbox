@@ -123,6 +123,7 @@ const toolComponents: Record<string, ComponentType> = {
   'toml-json': dynamic(() => import('./toml-json/TomlJsonConverter'), { ssr: false }),
   'properties-json': dynamic(() => import('./properties-json/PropertiesJsonConverter'), { ssr: false }),
   'image-format': dynamic(() => import('./image-format/ImageFormatConverter'), { ssr: false }),
+  'aspect-ratio': dynamic(() => import('./aspect-ratio/AspectRatioCalculator'), { ssr: false }),
   'svg-optimizer': dynamic(() => import('./svg-optimizer/SvgOptimizer'), { ssr: false }),
 
   // Formatter Tools (continued)
