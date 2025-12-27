@@ -460,6 +460,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['box-shadow', 'css', 'shadow', 'generate', 'visual', 'styling'],
   },
   {
+    id: 'border-radius-generator',
+    name: 'Border-Radius Generator',
+    description: 'Generate CSS border-radius visually',
+    category: 'Generator',
+    keywords: ['border-radius', 'css', 'radius', 'generate', 'visual', 'styling', 'rounded corners'],
+  },
+  {
     id: 'flexbox-playground',
     name: 'Flexbox Playground',
     description: 'Visual playground for CSS Flexbox',
@@ -493,6 +500,13 @@ export const toolDefinitions: ToolDefinition[] = [
     description: 'Generate random numbers with min/max range',
     category: 'Generator',
     keywords: ['random', 'number', 'generate', 'range', 'min', 'max'],
+  },
+  {
+    id: 'random-string',
+    name: 'Random String Generator',
+    description: 'Generate random strings with custom character sets',
+    category: 'Generator',
+    keywords: ['random', 'string', 'generate', 'alphanumeric', 'password', 'token'],
   },
   {
     id: 'ulid',
