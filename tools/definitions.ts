@@ -676,6 +676,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['unix', 'permissions', 'chmod', 'file', 'rwx', 'octal'],
   },
   {
+    id: 'cidr-calculator',
+    name: 'CIDR Calculator',
+    description: 'Calculate IP address ranges from CIDR notation',
+    category: 'Web',
+    keywords: ['cidr', 'ip', 'subnet', 'network', 'calculator', 'address range'],
+  },
+  {
     id: 'length',
     name: 'Length Converter',
     description: 'Convert between meters, kilometers, inches, feet, yards, miles, etc.',
@@ -804,11 +811,25 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['toml', 'format', 'beautify', 'indent'],
   },
   {
+    id: 'env-formatter',
+    name: '.env Formatter',
+    description: 'Format and organize .env files',
+    category: 'Formatter',
+    keywords: ['env', 'environment', 'variables', 'format', 'sort', 'organize'],
+  },
+  {
     id: 'markdown-formatter',
     name: 'Markdown Formatter',
     description: 'Format and beautify Markdown',
     category: 'Formatter',
     keywords: ['markdown', 'md', 'format', 'beautify'],
+  },
+  {
+    id: 'markdown-table',
+    name: 'Markdown Table Generator',
+    description: 'Generate Markdown tables visually',
+    category: 'Generator',
+    keywords: ['markdown', 'table', 'generate', 'md', 'grid'],
   },
   {
     id: 'shell-formatter',
@@ -895,6 +916,13 @@ export const toolDefinitions: ToolDefinition[] = [
     description: 'Generate robots.txt files',
     category: 'Web',
     keywords: ['robots', 'txt', 'crawler', 'seo', 'generate'],
+  },
+  {
+    id: 'htaccess-generator',
+    name: '.htaccess Generator',
+    description: 'Generate Apache .htaccess rules visually',
+    category: 'Generator',
+    keywords: ['htaccess', 'apache', 'redirect', 'rewrite', 'security', 'headers'],
   },
   {
     id: 'user-agent',
