@@ -446,6 +446,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['readme', 'markdown', 'generate', 'template', 'documentation', 'md'],
   },
   {
+    id: 'license-generator',
+    name: 'LICENSE Generator',
+    description: 'Generate license files (MIT, Apache, GPL, etc.)',
+    category: 'Generator',
+    keywords: ['license', 'mit', 'apache', 'gpl', 'generate', 'legal'],
+  },
+  {
     id: 'favicon-generator',
     name: 'Favicon Generator',
     description: 'Generate favicon sets from an image',
