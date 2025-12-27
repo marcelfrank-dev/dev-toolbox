@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { generateBaseMetadata } from '@/lib/seo'
-import { Footer } from '@/components/Footer'
 import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
 import './globals.css'
@@ -17,10 +16,9 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className="flex min-h-screen flex-col antialiased">
+      <body className="h-screen overflow-hidden antialiased">
         <ToastProvider>
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <main className="h-full">{children}</main>
         </ToastProvider>
       </body>
     </html>
