@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 
 interface AdPlacementProps {
   position: '1593654749' | '1190330064'
@@ -79,13 +78,14 @@ export function AdPlacement({ position, className = '', slot }: AdPlacementProps
           rel="noopener noreferrer"
           className="block w-full max-w-[728px] transition-opacity hover:opacity-90"
         >
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/ClipStack-ad-728x90.jpg"
             alt="ClipStack - your productivity booster! for MacOS"
             width={728}
             height={90}
             className="w-full h-auto rounded-lg"
-            priority={false}
+            loading="lazy"
           />
         </a>
       </div>
