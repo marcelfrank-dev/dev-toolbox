@@ -38,7 +38,7 @@ export default function RootLayout({
           <footer className="border-t border-zinc-800 bg-zinc-950/80">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-xs text-zinc-500 sm:px-6 lg:px-8">
               <p className="hidden sm:block">
-                © {new Date().getFullYear()} Dev Toolbox. All rights reserved.
+                © {new Date().getFullYear()} Tiny Dev Tools. All rights reserved.
               </p>
               <div className="flex flex-1 justify-end gap-4 sm:flex-none">
                 <Link href="/imprint" className="hover:text-zinc-300">

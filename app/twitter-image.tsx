@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Dev Toolbox - Free Online Developer Tools'
+export const alt = 'Tiny Dev Tools - 85+ Free Online Developer Utilities'
 export const size = {
   width: 1200,
   height: 630,
@@ -87,7 +87,7 @@ export default async function Image() {
               letterSpacing: '-2px',
             }}
           >
-            Dev Toolbox
+            Tiny Dev Tools
           </h1>
 
           {/* Subtitle */}
@@ -99,7 +99,7 @@ export default async function Image() {
               textAlign: 'center',
             }}
           >
-            36+ Free Online Developer Tools
+            85+ Free Online Developer Utilities
           </p>
 
           {/* Footer */}

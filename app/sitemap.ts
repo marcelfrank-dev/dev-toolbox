@@ -17,15 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Tool deep links - organized by category priority
   const categoryPriority: Record<string, number> = {
-    JSON: 0.9,
-    Encoding: 0.9,
-    Text: 0.85,
-    Security: 0.85,
-    Generator: 0.85,
-    Web: 0.8,
-    Formatter: 0.8,
-    Converter: 0.8,
-    'Developer Reference': 0.75,
+    'Converters & Formatters': 0.9,
+    'Text & Analysis': 0.85,
+    'Security & Crypto': 0.85,
+    'Generators': 0.85,
+    'DevOps & Network': 0.8,
+    'AI': 0.8,
+    'Cheatsheets': 0.75,
   }
 
   toolDefinitions.forEach((tool) => {

@@ -9,7 +9,7 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
   return (
     <div className="px-6 py-12 text-center lg:px-8 relative z-10">
       <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg">
-        Dev <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">Toolbox</span>
+        Tiny <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">Dev Tools</span>
       </h1>
       <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
         A collection of free, fast developer tools that run entirely in your browser.

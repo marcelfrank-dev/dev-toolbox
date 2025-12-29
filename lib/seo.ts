@@ -8,17 +8,17 @@ export function generateToolMetadata(tool: Tool): Metadata {
   const fullDescription = `${tool.description}. Free online tool - runs locally in your browser. No data leaves your machine.`
   
   return {
-    title: `${tool.name} | Free Online Tool - Dev Toolbox`,
+    title: `${tool.name} | Tiny Dev Tools - Free Online Utilities`,
     description: fullDescription,
-    keywords: [...tool.keywords, 'free tool', 'online tool', 'developer tool', 'privacy'].join(', '),
+    keywords: [...tool.keywords, 'tiny dev tools', 'free tool', 'online tool', 'developer tool', 'privacy'].join(', '),
     alternates: {
       canonical: toolUrl,
     },
     openGraph: {
-      title: `${tool.name} | Dev Toolbox`,
+      title: `${tool.name} | Tiny Dev Tools`,
       description: fullDescription,
       url: toolUrl,
-      siteName: 'Dev Toolbox',
+      siteName: 'Tiny Dev Tools',
       type: 'website',
       locale: 'en_US',
       images: [
@@ -26,13 +26,13 @@ export function generateToolMetadata(tool: Tool): Metadata {
           url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: `${tool.name} - Dev Toolbox`,
+          alt: `${tool.name} - Tiny Dev Tools`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${tool.name} | Dev Toolbox`,
+      title: `${tool.name} | Tiny Dev Tools`,
       description: fullDescription,
       images: [`${BASE_URL}/og-image.png`],
     },
@@ -41,9 +41,10 @@ export function generateToolMetadata(tool: Tool): Metadata {
 
 export function generateBaseMetadata(): Metadata {
   const description =
-    'Free online developer tools: JSON formatter, Base64 encoder, URL encoder, JWT decoder, UUID generator, hash generator, regex tester, timestamp converter, case converter, and 130+ more tools. All tools run locally in your browser - no data leaves your machine. Privacy-first, instant, and completely free.'
+    'Tiny Dev Tools is a collection of 85+ free online developer utilities: JSON formatter, Base64 encoder, URL encoder, JWT decoder, UUID generator, hash generator, regex tester, and many more. All tools run entirely in your browser - no data leaves your machine. Privacy-first, instant, and completely free.'
   
   const keywords = [
+    'tiny dev tools',
     'developer tools',
     'online tools',
     'json formatter',
@@ -67,20 +68,20 @@ export function generateBaseMetadata(): Metadata {
   ].join(', ')
 
   return {
-    title: 'Dev Toolbox - 130+ Free Online Developer Tools | Privacy-First',
+    title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities | Privacy-First',
     description,
     keywords,
-    authors: [{ name: 'Dev Toolbox' }],
-    creator: 'Dev Toolbox',
-    publisher: 'Dev Toolbox',
+    authors: [{ name: 'Tiny Dev Tools' }],
+    creator: 'Tiny Dev Tools',
+    publisher: 'Tiny Dev Tools',
     alternates: {
       canonical: BASE_URL,
     },
     openGraph: {
-      title: 'Dev Toolbox - 130+ Free Online Developer Tools',
+      title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities',
       description,
       url: BASE_URL,
-      siteName: 'Dev Toolbox',
+      siteName: 'Tiny Dev Tools',
       type: 'website',
       locale: 'en_US',
       images: [
@@ -88,16 +89,16 @@ export function generateBaseMetadata(): Metadata {
           url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: 'Dev Toolbox - Free Online Developer Tools',
+          alt: 'Tiny Dev Tools - Free Online Developer Utilities',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Dev Toolbox - 130+ Free Online Developer Tools',
+      title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities',
       description,
       images: [`${BASE_URL}/og-image.png`],
-      creator: '@devtoolbox',
+      creator: '@tinydevtools',
     },
     robots: {
       index: true,

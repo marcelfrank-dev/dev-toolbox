@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Dev Toolbox - Free Online Developer Tools'
+export const alt = 'Tiny Dev Tools - 85+ Free Online Developer Utilities'
 export const size = {
   width: 1200,
   height: 630,
@@ -103,7 +103,7 @@ export default async function Image() {
               textShadow: '0 4px 20px rgba(0,0,0,0.3)',
             }}
           >
-            Dev Toolbox
+            Tiny Dev Tools
           </h1>
 
           {/* Subtitle */}
@@ -136,7 +136,7 @@ export default async function Image() {
               'Hash Generator',
               'Regex Tester',
               'Color Converter',
-              '+30 more',
+              '+85 utility tools',
             ].map((tool) => (
               <div
                 key={tool}
