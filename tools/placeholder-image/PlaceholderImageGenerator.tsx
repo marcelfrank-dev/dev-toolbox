@@ -1,11 +1,46 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { CopyButton } from '@/components/CopyButton'
 
+function generatePlaceholderImageDataUrl(
+  width: number,
+  height: number,
+  text: string,
+  bgColor: string,
+  textColor: string
+): string {
+  // Create a canvas element
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext('2d')
+
+  if (!ctx) {
+    return ''
+  }
+
+  // Fill background
+  ctx.fillStyle = bgColor
+  ctx.fillRect(0, 0, width, height)
+
+  // Draw text
+  if (text || true) {
+    const displayText = text || `${width} × ${height}`
+    ctx.fillStyle = textColor
+    ctx.font = `bold ${Math.min(width, height) / 10}px Arial, sans-serif`
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillText(displayText, width / 2, height / 2)
+  }
+
+  // Return as data URL
+  return canvas.toDataURL('image/png')
+}
+
 function generatePlaceholderUrl(width: number, height: number, text: string, bgColor: string, textColor: string): string {
-  const encodedText = encodeURIComponent(text || `${width}x${height}`)
-  return `https://via.placeholder.com/${width}x${height}/${bgColor.replace('#', '')}/${textColor.replace('#', '')}?text=${encodedText}`
+  // Generate data URL for client-side placeholder
+  return generatePlaceholderImageDataUrl(width, height, text, bgColor, textColor)
 }
 
 export default function PlaceholderImageGenerator() {
@@ -16,12 +51,30 @@ export default function PlaceholderImageGenerator() {
   const [textColor, setTextColor] = useState('#000000')
   const [count, setCount] = useState(1)
 
-  const urls: string[] = []
-  for (let i = 0; i < count; i++) {
-    urls.push(generatePlaceholderUrl(width, height, text || `${width}x${height}`, bgColor, textColor))
-  }
+  // Generate data URLs for preview (client-side only)
+  const imageDataUrls = useMemo(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return []
+    }
+    const urls: string[] = []
+    for (let i = 0; i < count; i++) {
+      urls.push(generatePlaceholderUrl(width, height, text, bgColor, textColor))
+    }
+    return urls
+  }, [width, height, text, bgColor, textColor, count])
 
-  const output = urls.join('\n')
+  // Generate exportable code snippets
+  const output = useMemo(() => {
+    if (count === 1) {
+      // Single image - provide data URL and base64 code
+      const dataUrl = imageDataUrls[0]
+      const base64 = dataUrl.split(',')[1]
+      return `Data URL:\n${dataUrl}\n\nBase64:\n${base64}\n\nHTML:\n<img src="${dataUrl}" alt="Placeholder ${width}x${height}" width="${width}" height="${height}" />`
+    } else {
+      // Multiple images
+      return imageDataUrls.map((url, i) => `Image ${i + 1}:\n${url}`).join('\n\n')
+    }
+  }, [imageDataUrls, count, width, height])
 
   const clear = () => {
     setWidth(800)
@@ -130,11 +183,11 @@ export default function PlaceholderImageGenerator() {
         </div>
       </div>
 
-      {urls.length > 0 && (
+      {imageDataUrls.length > 0 && (
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <label htmlFor="placeholder-output" className="text-sm font-medium text-zinc-300">
-              Generated URLs
+              Generated Data URLs & Code
             </label>
             <CopyButton text={output} />
           </div>
@@ -142,19 +195,45 @@ export default function PlaceholderImageGenerator() {
             id="placeholder-output"
             value={output}
             readOnly
-            className="h-32 w-full resize-none rounded-lg border border-zinc-700 bg-zinc-900 p-4 font-mono text-sm text-zinc-200 focus:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500/20"
+            className="h-48 w-full resize-none rounded-lg border border-zinc-700 bg-zinc-900 p-4 font-mono text-xs text-zinc-200 focus:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500/20"
           />
         </div>
       )}
 
-      {urls.length > 0 && (
-        <div className="grid gap-4 sm:grid-cols-2">
-          {urls.slice(0, 4).map((url, i) => (
-            <div key={i} className="flex flex-col gap-2">
-              <img src={url} alt={`Preview ${i + 1}`} className="h-32 w-full rounded-lg object-cover" />
-              <code className="truncate text-xs text-zinc-400">{url}</code>
-            </div>
-          ))}
+      {imageDataUrls.length > 0 && (
+        <div className="flex flex-col gap-4">
+          <h3 className="text-sm font-medium text-zinc-300">Preview</h3>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {imageDataUrls.slice(0, 4).map((url, i) => (
+              <div key={i} className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-zinc-400">Preview {i + 1}</span>
+                  <span className="text-xs text-zinc-500">
+                    {width} × {height}
+                  </span>
+                </div>
+                <div className="relative overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900">
+                  <img
+                    src={url}
+                    alt={`Placeholder ${width}x${height} ${i + 1}`}
+                    className="h-48 w-full object-contain"
+                    style={{ maxHeight: '300px' }}
+                  />
+                </div>
+                <button
+                  onClick={() => {
+                    const link = document.createElement('a')
+                    link.download = `placeholder-${width}x${height}-${i + 1}.png`
+                    link.href = url
+                    link.click()
+                  }}
+                  className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-zinc-100"
+                >
+                  Download Image
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
