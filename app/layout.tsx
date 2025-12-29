@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Script from 'next/script'
 import { generateBaseMetadata } from '@/lib/seo'
 import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
@@ -19,15 +20,16 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <StructuredData />
+      </head>
+      <body className="h-screen overflow-hidden antialiased">
         {adsensePublisherId && (
-          <script
+          <Script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
             crossOrigin="anonymous"
+            strategy="afterInteractive"
           />
         )}
-      </head>
-      <body className="h-screen overflow-hidden antialiased">
         <ToastProvider>
           <main className="h-full">{children}</main>
           <footer className="border-t border-zinc-800 bg-zinc-950/80">

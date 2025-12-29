@@ -33,18 +33,39 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
   useEffect(() => {
     if (!ADSENSE_PUBLISHER_ID || !adRef.current) return
 
-    // Check if AdSense script is already loaded
-    if (typeof window !== 'undefined') {
+    // Wait for AdSense script to load, then initialize ad
+    let retryCount = 0
+    const maxRetries = 50 // 5 seconds max wait time
+
+    const initializeAd = () => {
+      if (typeof window === 'undefined') return
+
+      // Initialize adsbygoogle array if it doesn't exist
+      if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
+        ;(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle = []
+      }
+
       const adsbygoogle = (window as Window & { adsbygoogle?: unknown[] }).adsbygoogle
-      if (adsbygoogle) {
+
+      if (adsbygoogle && Array.isArray(adsbygoogle)) {
         try {
-          // Push ad to AdSense
+          // Push ad to AdSense - this initializes the ad
           adsbygoogle.push({})
         } catch (e) {
-          console.error('AdSense error:', e)
+          console.error('AdSense initialization error:', e)
         }
+      } else if (retryCount < maxRetries) {
+        // If script not loaded yet, wait a bit and retry
+        retryCount++
+        setTimeout(initializeAd, 100)
+      } else {
+        console.warn('AdSense script failed to load after maximum retries')
       }
     }
+
+    // Start initialization after a short delay to ensure script is loaded
+    setTimeout(initializeAd, 100)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position])
 
   // Show placeholder if enabled and no AdSense
@@ -64,6 +85,7 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
 
   // Render actual AdSense ad
   if (ADSENSE_PUBLISHER_ID) {
+    const slotId = getAdSlotId()
     return (
       <div
         ref={adRef}
@@ -74,7 +96,7 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
           className="adsbygoogle"
           style={{ display: 'block' }}
           data-ad-client={ADSENSE_PUBLISHER_ID}
-          data-ad-slot={getAdSlotId()}
+          data-ad-slot={slotId}
           data-ad-format={position === '1190330064' ? 'rectangle' : 'horizontal'}
           data-full-width-responsive="true"
         />
