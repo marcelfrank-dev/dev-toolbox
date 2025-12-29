@@ -4,12 +4,13 @@ export type ToolCategory =
   | 'JSON'
   | 'Encoding'
   | 'Text'
-  | 'Web'
   | 'Security'
   | 'Generator'
+  | 'Web'
   | 'Formatter'
   | 'Converter'
-  | 'Utility'
+  | 'Math'
+  | 'DevOps'
   | 'Developer Reference'
 
 export interface Tool {

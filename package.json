@@ -16,10 +16,14 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+    "composerize": "^1.7.5",
+    "cronstrue": "^3.9.0",
     "framer-motion": "^12.23.26",
     "html-to-image": "^1.11.13",
+    "json-to-zod": "^1.1.2",
     "next": "^15.1.0",
     "prism-react-renderer": "^2.4.1",
+    "railroad-diagrams": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

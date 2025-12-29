@@ -12,6 +12,18 @@ const toolComponents: Record<string, ComponentType> = {
   'code-to-image': dynamic(() => import('./image/CodeToImage'), { ssr: false }),
   'glassmorphism-generator': dynamic(() => import('./css/GlassmorphismGenerator'), { ssr: false }),
 
+  // Batch 2 Utility Tools
+  'docker-converter': dynamic(() => import('./devops/DockerConverter'), { ssr: false }),
+  'git-explorer': dynamic(() => import('./devops/GitExplorer'), { ssr: false }),
+  'cron-explainer': dynamic(() => import('./text/CronExplainer'), { ssr: false }),
+  'json-to-zod': dynamic(() => import('./generator/JsonToZod'), { ssr: false }),
+  'meta-tag-generator': dynamic(() => import('./web/MetaTagGenerator'), { ssr: false }),
+  'markdown-table-generator': dynamic(() => import('./generator/MarkdownTable'), { ssr: false }),
+  'triangle-generator': dynamic(() => import('./css/TriangleGenerator'), { ssr: false }),
+  'nginx-generator': dynamic(() => import('./generator/NginxGenerator'), { ssr: false }),
+  'sql-to-json': dynamic(() => import('./converter/SqlToJson'), { ssr: false }),
+  'iban-validator': dynamic(() => import('./web/IbanValidator'), { ssr: false }),
+
 
   // JSON Tools
   'json-formatter': dynamic(() => import('./json/JsonFormatter'), { ssr: false }),

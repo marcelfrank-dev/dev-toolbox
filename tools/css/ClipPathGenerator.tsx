@@ -101,8 +101,8 @@ export default function ClipPathGenerator() {
                                 setActivePreset(name)
                             }}
                             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${activePreset === name
-                                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                                    : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
+                                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                                : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
                                 }`}
                         >
                             {name}
@@ -176,32 +176,46 @@ function Handle({ point, parentRef, onUpdate }: {
     parentRef: React.RefObject<HTMLDivElement | null>,
     onUpdate: (x: number, y: number, w: number, h: number) => void
 }) {
-    const containerSize = 400 // Approximation, effects logic if responsive, handled by dynamic calc below
+    const [isDragging, setIsDragging] = useState(false)
+
+    useEffect(() => {
+        if (!isDragging) return
+
+        const handlePointerMove = (e: PointerEvent) => {
+            if (parentRef.current) {
+                const rect = parentRef.current.getBoundingClientRect()
+                const innerWidth = rect.width - 64
+                const innerHeight = rect.height - 64
+
+                // Calculate position relative to the inner content area (inset 32px)
+                const pX = e.clientX - rect.left - 32
+                const pY = e.clientY - rect.top - 32
+
+                onUpdate(pX, pY, innerWidth, innerHeight)
+            }
+        }
+
+        const handlePointerUp = () => {
+            setIsDragging(false)
+        }
+
+        window.addEventListener('pointermove', handlePointerMove)
+        window.addEventListener('pointerup', handlePointerUp)
+
+        return () => {
+            window.removeEventListener('pointermove', handlePointerMove)
+            window.removeEventListener('pointerup', handlePointerUp)
+        }
+    }, [isDragging, parentRef, onUpdate])
 
     return (
-        <motion.div
-            drag
-            dragMomentum={false}
-            dragElastic={0}
-            dragConstraints={parentRef}
-            onDrag={(_, info) => {
-                // This is complex because we need the absolute position relative to the container
-                // Ideally we use a specialized library or simpler mouse events for this.
-                // But let's try to infer from the parent bounds.
-                if (parentRef.current) {
-                    const rect = parentRef.current.getBoundingClientRect()
-                    // The inset is 32px (8 * 4) standard tailwind 'inset-8'
-                    const innerWidth = rect.width - 64
-                    const innerHeight = rect.height - 64
-
-                    // Current point global
-                    const pX = info.point.x - rect.left - 32
-                    const pY = info.point.y - rect.top - 32
-
-                    onUpdate(pX, pY, innerWidth, innerHeight)
-                }
+        <div
+            onPointerDown={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setIsDragging(true)
             }}
-            className="absolute w-4 h-4 -ml-2 -mt-2 bg-white rounded-full shadow-lg cursor-move pointer-events-auto border-2 border-emerald-500 z-10 hover:scale-125 transition-transform"
+            className={`absolute w-4 h-4 -ml-2 -mt-2 bg-white rounded-full shadow-lg cursor-move pointer-events-auto border-2 border-emerald-500 z-10 transition-transform ${isDragging ? 'scale-125' : 'hover:scale-110'}`}
             style={{
                 left: `${point.x}%`,
                 top: `${point.y}%`

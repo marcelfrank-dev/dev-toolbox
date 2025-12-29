@@ -1069,6 +1069,77 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Generator',
     keywords: ['css', 'glassmorphism', 'glass', 'blur', 'transparency', 'generator'],
   },
+  // New Utility Tools
+  {
+    id: 'docker-converter',
+    name: 'Docker Run → Compose',
+    description: 'Convert "docker run" commands to docker-compose.yml',
+    category: 'DevOps',
+    keywords: ['docker', 'compose', 'convert', 'yaml', 'container'],
+  },
+  {
+    id: 'git-explorer',
+    name: 'Git Cheatsheet Explorer',
+    description: 'Find the right Git command for undoing changes, branching, and more',
+    category: 'DevOps',
+    keywords: ['git', 'cheat sheet', 'command', 'undo', 'branch', 'merge'],
+  },
+  {
+    id: 'cron-explainer',
+    name: 'Cron Explainer',
+    description: 'Translate cron expressions into human-readable text',
+    category: 'Text',
+    keywords: ['cron', 'schedule', 'explain', 'human', 'text'],
+  },
+  {
+    id: 'json-to-zod',
+    name: 'JSON to Zod Schema',
+    description: 'Generate Zod schemas (TypeScript) from JSON objects',
+    category: 'Generator',
+    keywords: ['json', 'zod', 'schema', 'typescript', 'generate', 'validation'],
+  },
+  {
+    id: 'meta-tag-generator',
+    name: 'Meta Tag Generator',
+    description: 'Generate SEO and Social Media (Open Graph, Twitter) meta tags',
+    category: 'Web',
+    keywords: ['meta', 'seo', 'tags', 'open graph', 'social', 'generator'],
+  },
+  {
+    id: 'markdown-table-generator',
+    name: 'Markdown Table Generator',
+    description: 'Create and edit Markdown tables visually',
+    category: 'Generator',
+    keywords: ['markdown', 'table', 'grid', 'visual', 'editor'],
+  },
+  {
+    id: 'triangle-generator',
+    name: 'CSS Triangle Generator',
+    description: 'Generate pure CSS triangles using boders',
+    category: 'Generator',
+    keywords: ['css', 'triangle', 'shape', 'border', 'generator'],
+  },
+  {
+    id: 'nginx-generator',
+    name: 'Nginx Config Generator',
+    description: 'Generate common Nginx server blocks (Proxy, SPA, Static)',
+    category: 'DevOps',
+    keywords: ['nginx', 'config', 'server', 'proxy', 'generate'],
+  },
+  {
+    id: 'sql-to-json',
+    name: 'SQL to JSON',
+    description: 'Convert SQL INSERT statements to JSON data',
+    category: 'Converter',
+    keywords: ['sql', 'json', 'convert', 'insert', 'data', 'database'],
+  },
+  {
+    id: 'iban-validator',
+    name: 'IBAN Validator',
+    description: 'Validate and parse International Bank Account Numbers',
+    category: 'Web',
+    keywords: ['iban', 'bank', 'validate', 'check', 'finance'],
+  },
 
 ]
 
