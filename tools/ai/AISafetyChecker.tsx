@@ -146,7 +146,7 @@ export default function AISafetyChecker() {
                         {checks.length === 0 ? (
                             <div className="rounded-lg border border-emerald-500/30 bg-emerald-950/20 p-4 text-center">
                                 <p className="text-sm text-emerald-300">
-                                    {text ? 'Click "Run Safety Checks" to analyze' : 'No issues detected'}
+                                    No issues detected
                                 </p>
                             </div>
                         ) : (
