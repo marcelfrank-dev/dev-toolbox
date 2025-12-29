@@ -18,9 +18,9 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
 
   return (
     <div className="flex h-full flex-col overflow-y-auto">
-      {/* Top Banner Ad */}
+      {/* Top Banner Ad - ClipStack */}
       <div className="px-6 pt-6">
-        <AdPlacement position="1593654749" className="w-full" />
+        <AdPlacement position="1593654749" slot="top-banner" className="w-full" />
       </div>
 
       {/* Hero Section */}
@@ -47,9 +47,9 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
       {/* Show categories when no active search */}
       {!hasActiveSearch && (
         <>
-          {/* In-Content Ad */}
+          {/* In-Content Ad - AdSense */}
           <div className="px-6">
-            <AdPlacement position="1593654749" className="w-full" />
+            <AdPlacement position="1593654749" slot="in-content" className="w-full" />
           </div>
 
           {/* Categories with Top Tools */}

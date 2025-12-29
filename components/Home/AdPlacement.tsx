@@ -6,12 +6,13 @@ import Image from 'next/image'
 interface AdPlacementProps {
   position: '1593654749' | '1190330064'
   className?: string
+  slot?: 'top-banner' | 'in-content' // For horizontal ads: distinguish between top banner and in-content
 }
 
 const ENABLE_AD_PLACEHOLDERS = process.env.NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS === 'true'
 const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
-export function AdPlacement({ position, className = '' }: AdPlacementProps) {
+export function AdPlacement({ position, className = '', slot }: AdPlacementProps) {
   const adRef = useRef<HTMLDivElement>(null)
 
   const getAdDimensions = () => {
@@ -68,8 +69,8 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     setTimeout(initializeAd, 100)
   }, [position])
 
-  // Show ClipStack custom ad for horizontal banners when no AdSense
-  if (position === '1593654749' && !ADSENSE_PUBLISHER_ID) {
+  // Show ClipStack custom ad in top banner slot (always show, even with AdSense)
+  if (position === '1593654749' && slot === 'top-banner') {
     return (
       <div className={`flex items-center justify-center ${className}`}>
         <a
@@ -106,7 +107,7 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     )
   }
 
-  // Render actual AdSense ad
+  // Render actual AdSense ad (for in-content or when AdSense is configured)
   if (ADSENSE_PUBLISHER_ID) {
     const slotId = getAdSlotId()
     return (
