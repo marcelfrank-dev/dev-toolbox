@@ -28,14 +28,6 @@ export default function RootLayout({
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
             crossOrigin="anonymous"
             strategy="afterInteractive"
-            onError={(e) => {
-              // Silently handle AdSense being blocked by ad blockers
-              // This is expected behavior and shouldn't break the page
-              console.debug('AdSense script blocked by ad blocker (expected)')
-            }}
-            onLoad={() => {
-              // AdSense script loaded successfully
-            }}
           />
         )}
         <ToastProvider>
