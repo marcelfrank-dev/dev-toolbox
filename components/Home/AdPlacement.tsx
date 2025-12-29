@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 interface AdPlacementProps {
   position: '1593654749' | '1190330064'
@@ -67,7 +68,30 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     setTimeout(initializeAd, 100)
   }, [position])
 
-  // Show placeholder if enabled and no AdSense
+  // Show ClipStack custom ad for horizontal banners when no AdSense
+  if (position === '1593654749' && !ADSENSE_PUBLISHER_ID) {
+    return (
+      <div className={`flex items-center justify-center ${className}`}>
+        <a
+          href="https://apps.apple.com/de/app/clipstack-clip-shortcuts/id6747712458"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full max-w-[728px] transition-opacity hover:opacity-90"
+        >
+          <Image
+            src="/ClipStack-ad-728x90.jpg"
+            alt="ClipStack - your productivity booster! for MacOS"
+            width={728}
+            height={90}
+            className="w-full h-auto rounded-lg"
+            priority={false}
+          />
+        </a>
+      </div>
+    )
+  }
+
+  // Show placeholder if enabled and no AdSense (for sidebar or other positions)
   if (ENABLE_AD_PLACEHOLDERS && !ADSENSE_PUBLISHER_ID) {
     return (
       <div
