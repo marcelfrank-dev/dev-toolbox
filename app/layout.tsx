@@ -4,6 +4,7 @@ import { generateBaseMetadata } from '@/lib/seo'
 import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
 import { CookieConsentBanner } from '@/components/CookieConsentBanner'
+import { ErrorSuppressor } from '@/components/ErrorSuppressor'
 import './globals.css'
 
 export const metadata: Metadata = generateBaseMetadata()
@@ -47,6 +48,7 @@ export default function RootLayout({
           </footer>
         </ToastProvider>
         <CookieConsentBanner />
+        <ErrorSuppressor />
       </body>
     </html>
   )
