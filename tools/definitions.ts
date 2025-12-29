@@ -632,7 +632,8 @@ export const categories = [
   'Generators',
   'DevOps & Network',
   'Security & Crypto',
-  'Cheatsheets'
+  'Cheatsheets',
+  'AI'
 ] as ToolCategory[]
 
 export function getToolDefinitionById(id: string): ToolDefinition | undefined {
