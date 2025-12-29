@@ -24,15 +24,13 @@ function generatePlaceholderImageDataUrl(
   ctx.fillStyle = bgColor
   ctx.fillRect(0, 0, width, height)
 
-  // Draw text
-  if (text || true) {
-    const displayText = text || `${width} × ${height}`
-    ctx.fillStyle = textColor
-    ctx.font = `bold ${Math.min(width, height) / 10}px Arial, sans-serif`
-    ctx.textAlign = 'center'
-    ctx.textBaseline = 'middle'
-    ctx.fillText(displayText, width / 2, height / 2)
-  }
+  // Draw text (always show dimensions or custom text)
+  const displayText = text || `${width} × ${height}`
+  ctx.fillStyle = textColor
+  ctx.font = `bold ${Math.min(width, height) / 10}px Arial, sans-serif`
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText(displayText, width / 2, height / 2)
 
   // Return as data URL
   return canvas.toDataURL('image/png')
