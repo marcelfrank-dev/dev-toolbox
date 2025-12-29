@@ -7,6 +7,7 @@ import { HeroSection } from './HeroSection'
 import { AdPlacement } from './AdPlacement'
 import { WelcomePageSearch } from './WelcomePageSearch'
 import { CategorySection } from './CategorySection'
+import { ClipStackBanner } from './ClipStackBanner'
 
 interface WelcomePageProps {
   tools: Tool[]
@@ -18,10 +19,8 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
 
   return (
     <div className="flex h-full flex-col overflow-y-auto">
-      {/* Top Banner Ad - ClipStack */}
-      <div className="px-6 pt-6">
-        <AdPlacement position="1593654749" slot="top-banner" className="w-full" />
-      </div>
+      {/* Top Banner - ClipStack */}
+      <ClipStackBanner />
 
       {/* Hero Section */}
       <HeroSection toolCount={tools.length} categoryCount={categories.length} />
@@ -49,7 +48,7 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
         <>
           {/* In-Content Ad - AdSense */}
           <div className="px-6">
-            <AdPlacement position="1593654749" slot="in-content" className="w-full" />
+            <AdPlacement position="1593654749" className="w-full" />
           </div>
 
           {/* Categories with Top Tools */}

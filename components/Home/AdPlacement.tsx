@@ -5,13 +5,12 @@ import { useEffect, useRef } from 'react'
 interface AdPlacementProps {
   position: '1593654749' | '1190330064'
   className?: string
-  slot?: 'top-banner' | 'in-content' // For horizontal ads: distinguish between top banner and in-content
 }
 
 const ENABLE_AD_PLACEHOLDERS = process.env.NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS === 'true'
 const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
-export function AdPlacement({ position, className = '', slot }: AdPlacementProps) {
+export function AdPlacement({ position, className = '' }: AdPlacementProps) {
   const adRef = useRef<HTMLDivElement>(null)
 
   const getAdDimensions = () => {
@@ -80,37 +79,6 @@ export function AdPlacement({ position, className = '', slot }: AdPlacementProps
     setTimeout(initializeAd, 100)
   }, [position])
 
-  // Show ClipStack custom ad in top banner slot (always show, even with AdSense)
-  if (position === '1593654749' && slot === 'top-banner') {
-    return (
-      <div className={`flex items-center justify-center ${className}`}>
-        <a
-          href="https://apps.apple.com/de/app/clipstack-clip-shortcuts/id6747712458"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full max-w-[728px] transition-opacity hover:opacity-90"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/ClipStack-banner-728x90.jpg"
-            alt="ClipStack - your productivity booster! for MacOS"
-            width={728}
-            height={90}
-            className="w-full h-auto rounded-lg"
-            loading="lazy"
-            onError={(e) => {
-              // Silently handle if image is blocked by ad blocker
-              // This is expected behavior and shouldn't break the page
-              const target = e.target as HTMLImageElement
-              if (target) {
-                target.style.display = 'none'
-              }
-            }}
-          />
-        </a>
-      </div>
-    )
-  }
 
   // Show placeholder if enabled and no AdSense (for sidebar or other positions)
   if (ENABLE_AD_PLACEHOLDERS && !ADSENSE_PUBLISHER_ID) {
