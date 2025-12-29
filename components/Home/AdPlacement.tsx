@@ -30,7 +30,7 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     return position
   }
 
-  // Check if AdSense script is available and initialize ads
+  // Initialize AdSense ad immediately after element is rendered
   useEffect(() => {
     if (!ADSENSE_PUBLISHER_ID || !adRef.current) {
       setAdSenseAvailable(false)
@@ -44,9 +44,16 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
       return typeof (window as Window & { adsbygoogle?: unknown }).adsbygoogle !== 'undefined'
     }
 
+    // Initialize adsbygoogle array if it doesn't exist (as per AdSense docs)
+    if (typeof window !== 'undefined') {
+      if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
+        ;(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle = []
+      }
+    }
+
     // Wait for AdSense script to load, then initialize ad
     let retryCount = 0
-    const maxRetries = 50 // 5 seconds max wait time
+    const maxRetries = 100 // 10 seconds max wait time (increased for slower connections)
 
     const initializeAd = () => {
       if (typeof window === 'undefined' || !adRef.current) return
@@ -55,17 +62,12 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
       if (checkAdSenseAvailable()) {
         setAdSenseAvailable(true)
 
-        // Initialize adsbygoogle array if it doesn't exist
-        if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
-          ;(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle = []
-        }
-
         const adsbygoogle = (window as Window & { adsbygoogle?: unknown[] }).adsbygoogle
 
         if (adsbygoogle && Array.isArray(adsbygoogle)) {
           try {
             // Push ad to AdSense - this initializes the ad
-            // This must be called after the <ins> element is in the DOM
+            // This matches the official AdSense code: (adsbygoogle = window.adsbygoogle || []).push({})
             adsbygoogle.push({})
           } catch (error) {
             // Silently handle errors - ad blockers may cause this
@@ -83,8 +85,8 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
       }
     }
 
-    // Start initialization after a short delay to ensure script is loaded
-    setTimeout(initializeAd, 100)
+    // Start initialization immediately (script should be in head)
+    initializeAd()
   }, [position])
 
 

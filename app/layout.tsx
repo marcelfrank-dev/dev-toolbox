@@ -20,8 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <StructuredData />
-      </head>
-      <body className="h-screen overflow-hidden antialiased">
         {adsensePublisherId && (
           <script
             async
@@ -29,6 +27,8 @@ export default function RootLayout({
             crossOrigin="anonymous"
           />
         )}
+      </head>
+      <body className="h-screen overflow-hidden antialiased">
         <ToastProvider>
           <main className="h-full">{children}</main>
           <footer className="border-t border-zinc-800 bg-zinc-950/80">
