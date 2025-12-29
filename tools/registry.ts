@@ -7,6 +7,12 @@ import { toolDefinitions } from './definitions'
 
 // Tool components are lazy-loaded (client-only)
 const toolComponents: Record<string, ComponentType> = {
+  // New Tools
+  'clip-path-generator': dynamic(() => import('./css/ClipPathGenerator'), { ssr: false }),
+  'code-to-image': dynamic(() => import('./image/CodeToImage'), { ssr: false }),
+  'glassmorphism-generator': dynamic(() => import('./css/GlassmorphismGenerator'), { ssr: false }),
+
+
   // JSON Tools
   'json-formatter': dynamic(() => import('./json/JsonFormatter'), { ssr: false }),
   'json-yaml': dynamic(() => import('./json-yaml/JsonYamlConverter'), { ssr: false }),

@@ -752,27 +752,7 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Converter',
     keywords: ['aspect ratio', 'image ratio', 'dimensions', 'width', 'height', '16:9', '4:3', '1:1', 'calculate', 'resize', 'proportions'],
   },
-  {
-    id: 'length',
-    name: 'Length Converter',
-    description: 'Convert between length units',
-    category: 'Converter',
-    keywords: ['length', 'distance', 'meter', 'kilometer', 'mile', 'inch', 'convert'],
-  },
-  {
-    id: 'weight',
-    name: 'Weight Converter',
-    description: 'Convert between weight units',
-    category: 'Converter',
-    keywords: ['weight', 'mass', 'kilogram', 'pound', 'gram', 'convert'],
-  },
-  {
-    id: 'epoch',
-    name: 'Epoch Converter',
-    description: 'Convert between Unix timestamps and dates',
-    category: 'Converter',
-    keywords: ['epoch', 'timestamp', 'unix', 'date', 'time', 'convert'],
-  },
+
   {
     id: 'svg-optimizer',
     name: 'SVG Optimizer',
@@ -1068,6 +1048,28 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Developer Reference',
     keywords: ['emoji', 'picker', 'search', 'copy', 'smileys'],
   },
+  {
+    id: 'clip-path-generator',
+    name: 'CSS Clip Path Generator',
+    description: 'Create complex CSS shapes visually with interactive polygons',
+    category: 'Generator',
+    keywords: ['css', 'clip-path', 'polygon', 'shape', 'generator', 'visual'],
+  },
+  {
+    id: 'code-to-image',
+    name: 'Code to Image',
+    description: 'Create beautiful code screenshots for social media',
+    category: 'Generator',
+    keywords: ['code', 'image', 'screenshot', 'carbon', 'share', 'snippet'],
+  },
+  {
+    id: 'glassmorphism-generator',
+    name: 'Glassmorphism Generator',
+    description: 'Generate CSS for the frosted glass effect',
+    category: 'Generator',
+    keywords: ['css', 'glassmorphism', 'glass', 'blur', 'transparency', 'generator'],
+  },
+
 ]
 
 export const categories = [...new Set(toolDefinitions.map((t) => t.category))]

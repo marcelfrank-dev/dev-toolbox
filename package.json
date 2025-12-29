@@ -16,7 +16,10 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+    "framer-motion": "^12.23.26",
+    "html-to-image": "^1.11.13",
     "next": "^15.1.0",
+    "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
