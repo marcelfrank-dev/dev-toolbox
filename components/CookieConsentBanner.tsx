@@ -2,18 +2,24 @@
 
 import { useEffect, useState } from 'react'
 
-const ENABLE_COOKIE_CONSENT =
-  process.env.NEXT_PUBLIC_ENABLE_COOKIE_CONSENT === 'true'
-
 type ConsentState = 'accepted' | 'rejected' | 'unset'
 
 export function CookieConsentBanner() {
   const [consent, setConsent] = useState<ConsentState>('unset')
   const [mounted, setMounted] = useState(false)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    if (!ENABLE_COOKIE_CONSENT) return
+    // Check feature flag at runtime
+    const isEnabled = process.env.NEXT_PUBLIC_ENABLE_COOKIE_CONSENT === 'true'
+    setEnabled(isEnabled)
 
+    if (!isEnabled) {
+      setMounted(true)
+      return
+    }
+
+    // Check if user already gave consent
     const stored = window.localStorage.getItem('cookie-consent')
     if (stored === 'accepted' || stored === 'rejected') {
       setConsent(stored)
@@ -26,7 +32,8 @@ export function CookieConsentBanner() {
     window.localStorage.setItem('cookie-consent', value)
   }
 
-  if (!ENABLE_COOKIE_CONSENT || !mounted || consent !== 'unset') {
+  // Don't show if disabled, not mounted, or consent already given
+  if (!enabled || !mounted || consent !== 'unset') {
     return null
   }
 
@@ -37,8 +44,8 @@ export function CookieConsentBanner() {
           <div className="text-sm text-zinc-200">
             <p className="font-medium text-zinc-100">Cookie notice</p>
             <p className="mt-1 text-xs text-zinc-400">
-              Dev Toolbox currently does not use tracking cookies. This banner is a placeholder
-              for future monetization/ads and can be enabled or disabled via feature flag.
+              We use cookies to deliver personalized ads and analyze site traffic. By clicking
+              &quot;Accept&quot;, you consent to our use of cookies. You can opt out at any time.
             </p>
           </div>
           <div className="flex shrink-0 gap-2">

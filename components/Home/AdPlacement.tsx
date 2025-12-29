@@ -65,7 +65,6 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
 
     // Start initialization after a short delay to ensure script is loaded
     setTimeout(initializeAd, 100)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position])
 
   // Show placeholder if enabled and no AdSense
