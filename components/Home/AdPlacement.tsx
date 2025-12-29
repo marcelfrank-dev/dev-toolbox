@@ -92,12 +92,20 @@ export function AdPlacement({ position, className = '', slot }: AdPlacementProps
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/ClipStack-ad-728x90.jpg"
+            src="/ClipStack-banner-728x90.jpg"
             alt="ClipStack - your productivity booster! for MacOS"
             width={728}
             height={90}
             className="w-full h-auto rounded-lg"
             loading="lazy"
+            onError={(e) => {
+              // Silently handle if image is blocked by ad blocker
+              // This is expected behavior and shouldn't break the page
+              const target = e.target as HTMLImageElement
+              if (target) {
+                target.style.display = 'none'
+              }
+            }}
           />
         </a>
       </div>
