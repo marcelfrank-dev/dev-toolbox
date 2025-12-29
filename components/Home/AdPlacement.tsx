@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface AdPlacementProps {
   position: '1593654749' | '1190330064'
@@ -12,6 +12,7 @@ const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
 export function AdPlacement({ position, className = '' }: AdPlacementProps) {
   const adRef = useRef<HTMLDivElement>(null)
+  const [adSenseAvailable, setAdSenseAvailable] = useState<boolean | null>(null)
 
   const getAdDimensions = () => {
     switch (position) {
@@ -29,14 +30,17 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     return position
   }
 
-  // Load AdSense ads when enabled
+  // Check if AdSense script is available and initialize ads
   useEffect(() => {
-    if (!ADSENSE_PUBLISHER_ID || !adRef.current) return
+    if (!ADSENSE_PUBLISHER_ID || !adRef.current) {
+      setAdSenseAvailable(false)
+      return
+    }
 
     // Check if AdSense script is available (might be blocked by ad blocker)
     const checkAdSenseAvailable = () => {
       if (typeof window === 'undefined') return false
-      // Check if adsbygoogle exists and is a function (script loaded)
+      // Check if adsbygoogle exists (script loaded)
       return typeof (window as Window & { adsbygoogle?: unknown }).adsbygoogle !== 'undefined'
     }
 
@@ -45,33 +49,37 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     const maxRetries = 50 // 5 seconds max wait time
 
     const initializeAd = () => {
-      if (typeof window === 'undefined') return
+      if (typeof window === 'undefined' || !adRef.current) return
 
-      // If script is blocked by ad blocker, silently fail
-      if (!checkAdSenseAvailable()) {
-        if (retryCount < maxRetries) {
-          retryCount++
-          setTimeout(initializeAd, 100)
+      // Check if script is available
+      if (checkAdSenseAvailable()) {
+        setAdSenseAvailable(true)
+
+        // Initialize adsbygoogle array if it doesn't exist
+        if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
+          ;(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle = []
         }
-        // Silently fail if blocked - this is expected behavior with ad blockers
-        return
-      }
 
-      // Initialize adsbygoogle array if it doesn't exist
-      if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
-        ;(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle = []
-      }
+        const adsbygoogle = (window as Window & { adsbygoogle?: unknown[] }).adsbygoogle
 
-      const adsbygoogle = (window as Window & { adsbygoogle?: unknown[] }).adsbygoogle
-
-      if (adsbygoogle && Array.isArray(adsbygoogle)) {
-        try {
-          // Push ad to AdSense - this initializes the ad
-          adsbygoogle.push({})
-        } catch {
-          // Silently handle errors - ad blockers may cause this
-          console.debug('AdSense ad initialization skipped (may be blocked)')
+        if (adsbygoogle && Array.isArray(adsbygoogle)) {
+          try {
+            // Push ad to AdSense - this initializes the ad
+            // This must be called after the <ins> element is in the DOM
+            adsbygoogle.push({})
+          } catch (error) {
+            // Silently handle errors - ad blockers may cause this
+            console.debug('AdSense ad initialization failed:', error)
+            setAdSenseAvailable(false)
+          }
         }
+      } else if (retryCount < maxRetries) {
+        // If script not loaded yet, wait a bit and retry
+        retryCount++
+        setTimeout(initializeAd, 100)
+      } else {
+        // Script failed to load (likely blocked by ad blocker)
+        setAdSenseAvailable(false)
       }
     }
 
@@ -97,6 +105,11 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
 
   // Render actual AdSense ad (for in-content or when AdSense is configured)
   if (ADSENSE_PUBLISHER_ID) {
+    // Don't render ad container if AdSense is confirmed to be unavailable
+    if (adSenseAvailable === false) {
+      return null
+    }
+
     const slotId = getAdSlotId()
     return (
       <div
