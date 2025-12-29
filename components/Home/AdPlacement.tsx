@@ -111,6 +111,12 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     }
 
     const slotId = getAdSlotId()
+    
+    // Use fixed dimensions as per AdSense recommendations
+    const adStyle = position === '1190330064' 
+      ? { display: 'inline-block', width: '300px', height: '250px' }
+      : { display: 'inline-block', width: '728px', height: '90px' }
+    
     return (
       <div
         ref={adRef}
@@ -119,11 +125,9 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
       >
         <ins
           className="adsbygoogle"
-          style={{ display: 'block' }}
+          style={adStyle}
           data-ad-client={ADSENSE_PUBLISHER_ID}
           data-ad-slot={slotId}
-          data-ad-format={position === '1190330064' ? 'rectangle' : 'horizontal'}
-          data-full-width-responsive="true"
         />
       </div>
     )
