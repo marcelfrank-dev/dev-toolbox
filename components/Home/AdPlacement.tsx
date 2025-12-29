@@ -34,12 +34,29 @@ export function AdPlacement({ position, className = '', slot }: AdPlacementProps
   useEffect(() => {
     if (!ADSENSE_PUBLISHER_ID || !adRef.current) return
 
+    // Check if AdSense script is available (might be blocked by ad blocker)
+    const checkAdSenseAvailable = () => {
+      if (typeof window === 'undefined') return false
+      // Check if adsbygoogle exists and is a function (script loaded)
+      return typeof (window as Window & { adsbygoogle?: unknown }).adsbygoogle !== 'undefined'
+    }
+
     // Wait for AdSense script to load, then initialize ad
     let retryCount = 0
     const maxRetries = 50 // 5 seconds max wait time
 
     const initializeAd = () => {
       if (typeof window === 'undefined') return
+
+      // If script is blocked by ad blocker, silently fail
+      if (!checkAdSenseAvailable()) {
+        if (retryCount < maxRetries) {
+          retryCount++
+          setTimeout(initializeAd, 100)
+        }
+        // Silently fail if blocked - this is expected behavior with ad blockers
+        return
+      }
 
       // Initialize adsbygoogle array if it doesn't exist
       if (!(window as Window & { adsbygoogle?: unknown[] }).adsbygoogle) {
@@ -52,15 +69,10 @@ export function AdPlacement({ position, className = '', slot }: AdPlacementProps
         try {
           // Push ad to AdSense - this initializes the ad
           adsbygoogle.push({})
-        } catch (e) {
-          console.error('AdSense initialization error:', e)
+        } catch {
+          // Silently handle errors - ad blockers may cause this
+          console.debug('AdSense ad initialization skipped (may be blocked)')
         }
-      } else if (retryCount < maxRetries) {
-        // If script not loaded yet, wait a bit and retry
-        retryCount++
-        setTimeout(initializeAd, 100)
-      } else {
-        console.warn('AdSense script failed to load after maximum retries')
       }
     }
 
