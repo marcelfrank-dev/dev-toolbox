@@ -23,7 +23,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
       locale: 'en_US',
       images: [
         {
-          url: `${BASE_URL}/og-image.png`,
+          url: `${BASE_URL}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: `${tool.name} - Tiny Dev Tools`,
@@ -34,7 +34,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
       card: 'summary_large_image',
       title: `${tool.name} | Tiny Dev Tools`,
       description: fullDescription,
-      images: [`${BASE_URL}/og-image.png`],
+      images: [`${BASE_URL}/twitter-image`],
     },
   }
 }
@@ -86,7 +86,7 @@ export function generateBaseMetadata(): Metadata {
       locale: 'en_US',
       images: [
         {
-          url: `${BASE_URL}/og-image.png`,
+          url: `${BASE_URL}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: 'Tiny Dev Tools - Free Online Developer Utilities',
@@ -97,7 +97,7 @@ export function generateBaseMetadata(): Metadata {
       card: 'summary_large_image',
       title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities',
       description,
-      images: [`${BASE_URL}/og-image.png`],
+      images: [`${BASE_URL}/twitter-image`],
       creator: '@tinydevtools',
     },
     robots: {
