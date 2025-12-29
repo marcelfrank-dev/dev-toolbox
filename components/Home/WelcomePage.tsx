@@ -7,6 +7,7 @@ import { HeroSection } from './HeroSection'
 import { AdPlacement } from './AdPlacement'
 import { WelcomePageSearch } from './WelcomePageSearch'
 import { CategorySection } from './CategorySection'
+import { PopularToolsSection } from './PopularToolsSection'
 import { ClipStackBanner } from './ClipStackBanner'
 
 interface WelcomePageProps {
@@ -27,6 +28,11 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
         {/* Optional: Add glow effect behind hero */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none" />
         <HeroSection toolCount={tools.length} categoryCount={categories.length} />
+      </div>
+
+      {/* Popular Tools Section */}
+      <div className="relative z-10 mt-8">
+        <PopularToolsSection tools={tools} onToolClick={onToolClick} />
       </div>
 
       {/* Search Section */}

@@ -2,6 +2,7 @@
 
 import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
+import { ToolCard } from './ToolCard'
 
 interface CategorySectionProps {
   tools: Tool[]
@@ -41,19 +42,7 @@ export function CategorySection({ tools, onToolClick }: CategorySectionProps) {
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
                   {topTools.map((tool) => (
-                    <button
-                      key={tool.id}
-                      onClick={() => onToolClick(tool)}
-                      className="group/item rounded-lg border border-white/5 bg-white/5 p-4 text-left transition-all hover:bg-white/10 hover:border-white/20 hover:shadow-md"
-                    >
-                      <h4 className="font-semibold text-white/90 group-hover/item:text-cyan-400 transition-colors">
-                        {tool.name}
-                      </h4>
-                      <p className="mt-1 text-sm text-zinc-400 line-clamp-2">{tool.description}</p>
-                      <div className="mt-3 flex items-center text-xs text-secondary opacity-0 group-hover/item:opacity-100 transition-opacity -translate-x-2 group-hover/item:translate-x-0">
-                        Open Tool →
-                      </div>
-                    </button>
+                    <ToolCard key={tool.id} tool={tool} onClick={() => onToolClick(tool)} />
                   ))}
                 </div>
                 {remainingCount > 0 && (

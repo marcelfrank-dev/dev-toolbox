@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import { Tool } from '@/tools/types'
+import { ToolCard } from './ToolCard'
 
 interface WelcomePageSearchProps {
   tools: Tool[]
@@ -133,21 +134,7 @@ export function WelcomePageSearch({ tools, onToolClick, onSearchChange }: Welcom
               </p>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {searchResults.slice(0, 12).map((tool) => (
-                  <button
-                    key={tool.id}
-                    onClick={() => onToolClick(tool)}
-                    className="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 text-left transition-all hover:border-zinc-700 hover:bg-zinc-900"
-                  >
-                    <div className="mb-1 flex items-center justify-between">
-                      <h3 className="font-semibold text-zinc-200 group-hover:text-emerald-400">
-                        {tool.name}
-                      </h3>
-                      <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400">
-                        {tool.category}
-                      </span>
-                    </div>
-                    <p className="text-sm text-zinc-400">{tool.description}</p>
-                  </button>
+                  <ToolCard key={tool.id} tool={tool} onClick={() => onToolClick(tool)} />
                 ))}
               </div>
               {searchResults.length > 12 && (

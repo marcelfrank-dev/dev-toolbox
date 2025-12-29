@@ -1,17 +1,12 @@
 import { ComponentType } from 'react'
 
 export type ToolCategory =
-  | 'JSON'
-  | 'Encoding'
-  | 'Text'
-  | 'Security'
-  | 'Generator'
-  | 'Web'
-  | 'Formatter'
-  | 'Converter'
-  | 'Math'
-  | 'DevOps'
-  | 'Developer Reference'
+  | 'Converters & Formatters'
+  | 'Text & Analysis'
+  | 'Generators'
+  | 'DevOps & Network'
+  | 'Security & Crypto'
+  | 'Cheatsheets'
 
 export interface Tool {
   id: string
