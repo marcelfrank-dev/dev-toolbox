@@ -43,17 +43,35 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
     }
   }, [expandedCategories])
 
-  // Filter tools based on search
+  // Improved search with fuzzy matching
   const filteredTools = useMemo(() => {
-    if (!searchQuery) return tools
+    if (!searchQuery.trim()) return tools
 
-    const query = searchQuery.toLowerCase()
-    return tools.filter(
-      (tool) =>
-        tool.name.toLowerCase().includes(query) ||
-        tool.description.toLowerCase().includes(query) ||
-        tool.keywords.some((k) => k.toLowerCase().includes(query))
-    )
+    const normalizedQuery = searchQuery.toLowerCase().trim()
+    const queryWords = normalizedQuery.split(/\s+/).filter(Boolean)
+
+    return tools
+      .map((tool) => {
+        const name = tool.name.toLowerCase()
+        const description = tool.description.toLowerCase()
+        const keywords = tool.keywords.map((k) => k.toLowerCase()).join(' ')
+        const searchableText = `${name} ${description} ${keywords}`
+
+        // Check if all words match somewhere (fuzzy matching)
+        const allWordsMatch = queryWords.every((word) => searchableText.includes(word))
+        if (allWordsMatch) return { tool, score: 1 }
+
+        // Check individual word matches
+        const hasMatch =
+          name.includes(normalizedQuery) ||
+          description.includes(normalizedQuery) ||
+          keywords.includes(normalizedQuery) ||
+          queryWords.some((word) => searchableText.includes(word))
+
+        return hasMatch ? { tool, score: 1 } : null
+      })
+      .filter((item): item is { tool: Tool; score: number } => item !== null)
+      .map((item) => item.tool)
   }, [tools, searchQuery])
 
   // Group tools by category

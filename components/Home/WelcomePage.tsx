@@ -1,10 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
 import { HeroSection } from './HeroSection'
 import { AdPlacement } from './AdPlacement'
-import { FeaturedTools } from './FeaturedTools'
+import { WelcomePageSearch } from './WelcomePageSearch'
+import { CategorySection } from './CategorySection'
 
 interface WelcomePageProps {
   tools: Tool[]
@@ -12,8 +14,10 @@ interface WelcomePageProps {
 }
 
 export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
+  const [hasActiveSearch, setHasActiveSearch] = useState(false)
+
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col overflow-y-auto">
       {/* Top Banner Ad */}
       <div className="px-6 pt-6">
         <AdPlacement position="1593654749" className="w-full" />
@@ -22,38 +26,36 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
       {/* Hero Section */}
       <HeroSection toolCount={tools.length} categoryCount={categories.length} />
 
-      {/* In-Content Ad */}
-      <div className="px-6">
-        <AdPlacement position="1593654749" className="w-full" />
+      {/* Search Section */}
+      <div
+        onFocus={() => setHasActiveSearch(true)}
+        onBlur={(e) => {
+          // Only hide categories if search input is empty
+          const input = e.currentTarget.querySelector('input')
+          if (input && !input.value.trim()) {
+            setHasActiveSearch(false)
+          }
+        }}
+      >
+        <WelcomePageSearch
+          tools={tools}
+          onToolClick={onToolClick}
+          onSearchChange={(hasSearch) => setHasActiveSearch(hasSearch)}
+        />
       </div>
 
-      {/* Featured Tools */}
-      <FeaturedTools tools={tools} onToolClick={onToolClick} />
+      {/* Show categories when no active search */}
+      {!hasActiveSearch && (
+        <>
+          {/* In-Content Ad */}
+          <div className="px-6">
+            <AdPlacement position="1593654749" className="w-full" />
+          </div>
 
-      {/* Additional Content */}
-      <div className="px-6 pb-12">
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900/30 p-6">
-          <h2 className="mb-3 text-lg font-semibold text-zinc-200">Why Dev Toolbox?</h2>
-          <ul className="space-y-2 text-sm text-zinc-400">
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400">✓</span>
-              <span>All tools run entirely in your browser - no server calls</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400">✓</span>
-              <span>Your data never leaves your machine - complete privacy</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400">✓</span>
-              <span>Fast and responsive - no loading times</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-emerald-400">✓</span>
-              <span>Free and open source - no account required</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+          {/* Categories with Top Tools */}
+          <CategorySection tools={tools} onToolClick={onToolClick} />
+        </>
+      )}
     </div>
   )
 }
