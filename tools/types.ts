@@ -7,6 +7,7 @@ export type ToolCategory =
   | 'DevOps & Network'
   | 'Security & Crypto'
   | 'Cheatsheets'
+  | 'AI'
 
 export interface Tool {
   id: string

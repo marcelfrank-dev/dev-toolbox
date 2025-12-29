@@ -566,6 +566,64 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Converters & Formatters',
     keywords: ['iban', 'bank', 'validate', 'check', 'finance'],
   },
+
+  // AI
+  {
+    id: 'token-counter',
+    name: 'AI Token Counter',
+    description: 'Count tokens and estimate costs for GPT, Claude, and other models',
+    category: 'AI',
+    keywords: ['ai', 'token', 'count', 'cost', 'gpt', 'claude', 'llm'],
+  },
+  {
+    id: 'prompt-template',
+    name: 'Prompt Template Generator',
+    description: 'Create and manage reusable AI prompt templates with variables',
+    category: 'AI',
+    keywords: ['ai', 'prompt', 'template', 'generator', 'llm'],
+  },
+  {
+    id: 'ai-response-formatter',
+    name: 'AI Response Formatter',
+    description: 'Extract and clean code blocks from AI responses',
+    category: 'AI',
+    keywords: ['ai', 'response', 'format', 'code', 'extract', 'clean'],
+  },
+  {
+    id: 'prompt-helper',
+    name: 'Prompt Engineering Helper',
+    description: 'Build structured prompts with role, context, task, and format',
+    category: 'AI',
+    keywords: ['ai', 'prompt', 'engineering', 'structure', 'helper'],
+  },
+  {
+    id: 'model-comparison',
+    name: 'AI Model Comparison',
+    description: 'Compare specs, pricing, and features of different AI models',
+    category: 'AI',
+    keywords: ['ai', 'model', 'comparison', 'pricing', 'specs', 'gpt', 'claude'],
+  },
+  {
+    id: 'json-schema-ai',
+    name: 'JSON Schema for AI',
+    description: 'Generate and validate JSON schemas for structured AI outputs',
+    category: 'AI',
+    keywords: ['ai', 'json', 'schema', 'validate', 'structured', 'output'],
+  },
+  {
+    id: 'few-shot-builder',
+    name: 'Few-Shot Example Builder',
+    description: 'Create and manage few-shot learning examples for AI prompts',
+    category: 'AI',
+    keywords: ['ai', 'few-shot', 'examples', 'learning', 'prompt'],
+  },
+  {
+    id: 'ai-safety',
+    name: 'AI Safety Checker',
+    description: 'Detect prompt injection, PII, and security issues in AI interactions',
+    category: 'AI',
+    keywords: ['ai', 'safety', 'security', 'pii', 'injection', 'privacy'],
+  },
 ]
 
 export const categories = [

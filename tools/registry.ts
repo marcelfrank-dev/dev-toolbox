@@ -96,6 +96,16 @@ const toolComponents: Record<string, ComponentType> = {
   'http-methods': dynamic(() => import('./http-methods/HttpMethodsReference'), { ssr: false }),
   'keyboard-codes': dynamic(() => import('./keyboard-codes/KeyboardCodesReference'), { ssr: false }),
   'iban-validator': dynamic(() => import('./web/IbanValidator'), { ssr: false }),
+
+  // AI
+  'token-counter': dynamic(() => import('./ai/TokenCounter'), { ssr: false }),
+  'prompt-template': dynamic(() => import('./ai/PromptTemplate'), { ssr: false }),
+  'ai-response-formatter': dynamic(() => import('./ai/AIResponseFormatter'), { ssr: false }),
+  'prompt-helper': dynamic(() => import('./ai/PromptHelper'), { ssr: false }),
+  'model-comparison': dynamic(() => import('./ai/ModelComparison'), { ssr: false }),
+  'json-schema-ai': dynamic(() => import('./ai/JSONSchemaAI'), { ssr: false }),
+  'few-shot-builder': dynamic(() => import('./ai/FewShotBuilder'), { ssr: false }),
+  'ai-safety': dynamic(() => import('./ai/AISafetyChecker'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions.map((def) => ({
