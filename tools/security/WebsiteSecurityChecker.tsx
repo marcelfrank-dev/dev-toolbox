@@ -263,6 +263,18 @@ export default function WebsiteSecurityChecker() {
                 <h3 className="mb-4 text-lg font-medium text-zinc-200">Recommended External Security Tools</h3>
                 <div className="space-y-3">
                     <a
+                        href={`https://www.securenow.dev/?url=${encodeURIComponent(url)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-lg border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-950/30 to-emerald-900/20 p-4 transition-all hover:border-emerald-500/70 hover:shadow-lg hover:shadow-emerald-900/20"
+                    >
+                        <div className="mb-1 flex items-center gap-2">
+                            <span className="text-lg">⭐</span>
+                            <div className="text-sm font-bold text-emerald-300">SecureNow (Recommended)</div>
+                        </div>
+                        <div className="text-xs text-zinc-300">Comprehensive security analysis and vulnerability scanning</div>
+                    </a>
+                    <a
                         href={`https://transparencyreport.google.com/safe-browsing/search?url=${encodeURIComponent(url)}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -288,15 +300,6 @@ export default function WebsiteSecurityChecker() {
                     >
                         <div className="mb-1 text-sm font-medium text-zinc-200">Security Headers</div>
                         <div className="text-xs text-zinc-400">Analyze HTTP security headers</div>
-                    </a>
-                    <a
-                        href={`https://www.virustotal.com/gui/url/${btoa(url)}/detection`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block rounded-lg border border-zinc-700 bg-zinc-800/50 p-3 transition-colors hover:bg-zinc-800"
-                    >
-                        <div className="mb-1 text-sm font-medium text-zinc-200">VirusTotal</div>
-                        <div className="text-xs text-zinc-400">Scan URL with 70+ antivirus engines</div>
                     </a>
                 </div>
             </div>
