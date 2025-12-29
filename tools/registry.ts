@@ -88,6 +88,7 @@ const toolComponents: Record<string, ComponentType> = {
   'password-strength': dynamic(() => import('./password-strength/PasswordStrengthChecker'), { ssr: false }),
   'rsa': dynamic(() => import('./rsa/RsaKeyGenerator'), { ssr: false }),
   'cors': dynamic(() => import('./cors/CorsHeaderGenerator'), { ssr: false }),
+  'website-security': dynamic(() => import('./security/WebsiteSecurityChecker'), { ssr: false }),
 
   // Cheatsheets
   'git-explorer': dynamic(() => import('./devops/GitExplorer'), { ssr: false }),

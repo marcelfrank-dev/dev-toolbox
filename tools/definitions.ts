@@ -522,6 +522,13 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Security & Crypto',
     keywords: ['cors', 'header', 'generate', 'api', 'cross-origin'],
   },
+  {
+    id: 'website-security',
+    name: 'Website Security Checker',
+    description: 'Analyze website security with URL checks and external tool recommendations',
+    category: 'Security & Crypto',
+    keywords: ['security', 'website', 'ssl', 'https', 'checker', 'scan', 'vulnerability'],
+  },
 
   // Cheatsheets
   {
