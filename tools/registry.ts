@@ -109,10 +109,12 @@ const toolComponents: Record<string, ComponentType> = {
   'ai-safety': dynamic(() => import('./ai/AISafetyChecker'), { ssr: false }),
 }
 
-export const tools: Tool[] = toolDefinitions.map((def) => ({
-  ...def,
-  component: toolComponents[def.id],
-}))
+export const tools: Tool[] = toolDefinitions
+  .map((def) => ({
+    ...def,
+    component: toolComponents[def.id],
+  }))
+  .filter((tool) => tool.component !== undefined)
 
 export const categories: ToolCategory[] = [...new Set(tools.map((t) => t.category))]
 
