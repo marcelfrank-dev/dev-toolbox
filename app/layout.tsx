@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import { generateBaseMetadata } from '@/lib/seo'
 import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
 import { CookieConsentBanner } from '@/components/CookieConsentBanner'
 import { ErrorSuppressor } from '@/components/ErrorSuppressor'
 import './globals.css'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains' })
 
 export const metadata: Metadata = generateBaseMetadata()
 
@@ -28,7 +32,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="h-screen overflow-hidden antialiased">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} h-screen overflow-hidden antialiased bg-background text-foreground`}>
         <ToastProvider>
           <main className="h-full">{children}</main>
           <footer className="border-t border-zinc-800 bg-zinc-950/80">

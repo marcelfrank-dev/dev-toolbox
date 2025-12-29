@@ -18,15 +18,20 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
   const [hasActiveSearch, setHasActiveSearch] = useState(false)
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto">
+    <div className="flex h-full flex-col overflow-y-auto bg-transparent">
       {/* Top Banner - ClipStack */}
       <ClipStackBanner />
 
-      {/* Hero Section */}
-      <HeroSection toolCount={tools.length} categoryCount={categories.length} />
+      {/* Hero Section - Updated Visuals handled in components or globally */}
+      <div className="relative">
+        {/* Optional: Add glow effect behind hero */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none" />
+        <HeroSection toolCount={tools.length} categoryCount={categories.length} />
+      </div>
 
       {/* Search Section */}
       <div
+        className="relative z-10"
         onFocus={() => setHasActiveSearch(true)}
         onBlur={(e) => {
           // Only hide categories if search input is empty
@@ -47,8 +52,8 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
       {!hasActiveSearch && (
         <>
           {/* In-Content Ad - AdSense */}
-          <div className="px-6">
-            <AdPlacement position="1593654749" className="w-full" />
+          <div className="px-6 my-4">
+            <AdPlacement position="1593654749" className="w-full glass-card rounded-xl p-4" />
           </div>
 
           {/* Categories with Top Tools */}

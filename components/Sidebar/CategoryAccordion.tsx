@@ -34,15 +34,15 @@ export function CategoryAccordion({
   if (tools.length === 0) return null
 
   return (
-    <div className="border-b border-zinc-800">
+    <div className="border-b border-white/5">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between px-3 py-3 text-left transition-colors hover:bg-zinc-900/50"
+        className="flex w-full items-center justify-between px-3 py-3 text-left transition-colors hover:bg-white/5"
         aria-expanded={isExpanded}
       >
-        <span className="text-sm font-semibold text-zinc-300">{category}</span>
+        <span className="text-sm font-semibold text-white/90">{category}</span>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-zinc-500">({tools.length})</span>
+          <span className="text-xs text-white/50">({tools.length})</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -53,16 +53,15 @@ export function CategoryAccordion({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={`text-zinc-500 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+            className={`text-white/40 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </div>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-200 ${
-          isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="space-y-1 px-3 pb-3">
           {tools.map((tool) => (
