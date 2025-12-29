@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 
 interface AdPlacementProps {
-  position: 'top-banner' | 'sidebar' | 'in-content'
+  position: '1593654749' | '1190330064'
   className?: string
 }
 
@@ -15,21 +15,18 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
 
   const getAdDimensions = () => {
     switch (position) {
-      case 'top-banner':
+      case '1593654749': // Top Banner / In-Content
         return '728x90'
-      case 'sidebar':
+      case '1190330064': // Sidebar
         return '300x250'
-      case 'in-content':
-        return '728x90'
       default:
         return '728x90'
     }
   }
 
   const getAdSlotId = () => {
-    // Generate unique ad slot IDs for AdSense
-    // Format: ad-{position}-{unique-id}
-    return `ad-${position}`
+    // Use the position directly as it's the AdSense slot ID
+    return position
   }
 
   // Load AdSense ads when enabled
@@ -55,7 +52,7 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
     return (
       <div
         className={`flex items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/30 ${className}`}
-        style={{ minHeight: position === 'sidebar' ? '250px' : '90px' }}
+        style={{ minHeight: position === '1190330064' ? '250px' : '90px' }}
       >
         <div className="text-center">
           <p className="text-xs text-zinc-600">Ad Space</p>
@@ -71,14 +68,14 @@ export function AdPlacement({ position, className = '' }: AdPlacementProps) {
       <div
         ref={adRef}
         className={`ad-container ${className}`}
-        style={{ minHeight: position === 'sidebar' ? '250px' : '90px' }}
+        style={{ minHeight: position === '1190330064' ? '250px' : '90px' }}
       >
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
           data-ad-client={ADSENSE_PUBLISHER_ID}
           data-ad-slot={getAdSlotId()}
-          data-ad-format={position === 'sidebar' ? 'rectangle' : 'horizontal'}
+          data-ad-format={position === '1190330064' ? 'rectangle' : 'horizontal'}
           data-full-width-responsive="true"
         />
       </div>

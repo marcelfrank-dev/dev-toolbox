@@ -20,9 +20,6 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set())
   const sidebarRef = useRef<HTMLDivElement>(null)
 
-  const ENABLE_AD_PLACEHOLDERS =
-    process.env.NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS === 'true'
-
   // Load expanded categories from localStorage
   useEffect(() => {
     const saved = localStorage.getItem('sidebar-expanded-categories')
@@ -192,12 +189,10 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
             )}
           </nav>
 
-          {/* Sidebar Ad (desktop only, placeholder for future monetization) */}
-          {ENABLE_AD_PLACEHOLDERS && (
-            <div className="hidden border-t border-zinc-800 px-4 pb-4 pt-3 lg:block">
-              <AdPlacement position="sidebar" className="w-full" />
-            </div>
-          )}
+          {/* Sidebar Ad (desktop only) */}
+          <div className="hidden border-t border-zinc-800 px-4 pb-4 pt-3 lg:block">
+            <AdPlacement position="1190330064" className="w-full" />
+          </div>
         </div>
       </aside>
     </>
