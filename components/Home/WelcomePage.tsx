@@ -12,20 +12,27 @@ interface WelcomePageProps {
 }
 
 export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
+  const ENABLE_AD_PLACEHOLDERS =
+    process.env.NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS === 'true'
+
   return (
     <div className="flex h-full flex-col">
       {/* Top Banner Ad */}
-      <div className="px-6 pt-6">
-        <AdPlacement position="top-banner" className="w-full" />
-      </div>
+      {ENABLE_AD_PLACEHOLDERS && (
+        <div className="px-6 pt-6">
+          <AdPlacement position="top-banner" className="w-full" />
+        </div>
+      )}
 
       {/* Hero Section */}
       <HeroSection toolCount={tools.length} categoryCount={categories.length} />
 
       {/* In-Content Ad */}
-      <div className="px-6">
-        <AdPlacement position="in-content" className="w-full" />
-      </div>
+      {ENABLE_AD_PLACEHOLDERS && (
+        <div className="px-6">
+          <AdPlacement position="in-content" className="w-full" />
+        </div>
+      )}
 
       {/* Featured Tools */}
       <FeaturedTools tools={tools} onToolClick={onToolClick} />

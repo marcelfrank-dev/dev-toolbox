@@ -5,6 +5,7 @@ import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
 import { SidebarSearch } from './SidebarSearch'
 import { CategoryAccordion } from './CategoryAccordion'
+import { AdPlacement } from '@/components/Home/AdPlacement'
 
 interface SidebarProps {
   tools: Tool[]
@@ -18,6 +19,9 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set())
   const sidebarRef = useRef<HTMLDivElement>(null)
+
+  const ENABLE_AD_PLACEHOLDERS =
+    process.env.NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS === 'true'
 
   // Load expanded categories from localStorage
   useEffect(() => {
@@ -182,11 +186,18 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
                   onClick={() => setSearchQuery('')}
                   className="mt-2 text-xs text-emerald-400 hover:text-emerald-300"
                 >
-                  Clear search
+                  Clear
                 </button>
               </div>
             )}
           </nav>
+
+          {/* Sidebar Ad (desktop only, placeholder for future monetization) */}
+          {ENABLE_AD_PLACEHOLDERS && (
+            <div className="hidden border-t border-zinc-800 px-4 pb-4 pt-3 lg:block">
+              <AdPlacement position="sidebar" className="w-full" />
+            </div>
+          )}
         </div>
       </aside>
     </>

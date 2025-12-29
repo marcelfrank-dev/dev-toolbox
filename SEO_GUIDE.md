@@ -227,3 +227,18 @@ Long-tail:
 4. Submit sitemap to Google
 5. Start building backlinks through community engagement
 
+## 💰 Monetization / AdSense Readiness Checklist
+
+Use this checklist when you are ready to enable ads (e.g. Google AdSense):
+
+- [ ] Ensure **Privacy Policy** page is up to date and mentions ad/analytics behaviour
+- [ ] Ensure **Imprint/Legal** page is accurate for your region
+- [ ] Enable the **cookie consent banner** via `NEXT_PUBLIC_ENABLE_COOKIE_CONSENT=true` (if required in your region)
+- [ ] Enable **ad placeholders** via `NEXT_PUBLIC_ENABLE_AD_PLACEHOLDERS=true` and verify layout
+- [ ] Apply for a **Google AdSense** (or alternative) account
+- [ ] Add the ad network’s **script snippet** to the app (e.g. in `app/layout.tsx` `head`)
+- [ ] Configure **ad slots** in the ad network dashboard to match your placeholders (`top-banner`, `sidebar`, `in-content`)
+- [ ] Verify and configure **ads.txt** if required by the ad provider
+- [ ] Test ad display across **desktop, tablet, and mobile**
+- [ ] Re‑check **performance and Core Web Vitals** after enabling ads
+
