@@ -85,13 +85,73 @@ export default function PrivacyPage() {
           .
         </p>
 
-        <h3>Future Advertising</h3>
-        <p>We may introduce advertising in the future. If we do:</p>
+        <h3>Advertising and Cookies</h3>
+        <p>
+          This website may display advertisements to support the free service. If advertising is
+          enabled:
+        </p>
         <ul>
-          <li>This privacy policy will be updated</li>
-          <li>A cookie consent banner will be displayed</li>
-          <li>You will have the option to opt out of personalized ads</li>
+          <li>
+            <strong>Third-party ad networks</strong> (such as Google AdSense) may use cookies and
+            similar technologies to deliver personalized ads based on your browsing behavior
+          </li>
+          <li>
+            <strong>Data collected by ad networks</strong> may include: IP address, browser type,
+            device information, pages visited, and interactions with ads
+          </li>
+          <li>
+            <strong>Cookie consent</strong>: A cookie consent banner will be displayed, allowing
+            you to accept or reject non-essential cookies
+          </li>
+          <li>
+            <strong>Opt-out options</strong>: You can opt out of personalized advertising through:
+            <ul>
+              <li>
+                <a
+                  href="https://adssettings.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Ad Settings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youronlinechoices.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Your Online Choices (EU)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://optout.aboutads.info/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Digital Advertising Alliance (US)
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Ad network privacy policies</strong>: Ad networks have their own privacy
+            policies. For Google AdSense, see{' '}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google&apos;s Privacy Policy
+            </a>
+          </li>
         </ul>
+        <p>
+          <strong>Note:</strong> Currently, advertising is not enabled. This section describes
+          what will happen if we enable ads in the future. This privacy policy will be updated
+          with the exact ad networks used when advertising is activated.
+        </p>
 
         <h2>Contact</h2>
         <p>

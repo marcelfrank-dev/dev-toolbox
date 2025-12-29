@@ -13,10 +13,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
+
   return (
     <html lang="en">
       <head>
         <StructuredData />
+        {adsensePublisherId && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
+            crossOrigin="anonymous"
+          />
+        )}
       </head>
       <body className="h-screen overflow-hidden antialiased">
         <ToastProvider>

@@ -37,22 +37,16 @@ export default function ImprintPage() {
           Information according to § 5 TMG (German Telemedia Act)
         </p>
 
-        <div className="rounded-lg border border-amber-900/50 bg-amber-950/20 p-4 not-prose mb-6">
-          <p className="text-sm text-amber-400">
-            ⚠️ This is a template. Please update with your actual contact information.
-          </p>
-        </div>
-
         <p>
-          [Your Name / Company Name]<br />
-          [Street Address]<br />
-          [City, ZIP Code]<br />
-          [Country]
+          Marcel Frank / MF Development<br />
+          Pommerbachstraße 66<br />
+          56759 Kaisersesch<br />
+          Germany
         </p>
 
         <h2>Contact</h2>
         <p>
-          Email: [your-email@example.com]<br />
+          Email: dev-toolbox@mf-development.de<br />
           GitHub:{' '}
           <a
             href="https://github.com/marcelfrank-dev"
@@ -65,8 +59,10 @@ export default function ImprintPage() {
 
         <h2>Responsible for Content</h2>
         <p>
-          [Your Name]<br />
-          [Address as above]
+          Marcel Frank / MF Development<br />
+          Pommerbachstraße 66<br />
+          56759 Kaisersesch<br />
+          Germany
         </p>
 
         <h2>Liability for Content</h2>
