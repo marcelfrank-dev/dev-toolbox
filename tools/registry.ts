@@ -141,6 +141,7 @@ const toolComponents: Record<string, ComponentType> = {
   'python-formatter': dynamic(() => import('./python-formatter/PythonFormatter'), { ssr: false }),
   'php-formatter': dynamic(() => import('./php-formatter/PhpFormatter'), { ssr: false }),
   'graphql-formatter': dynamic(() => import('./graphql-formatter/GraphQLFormatter'), { ssr: false }),
+  'nginx-formatter': dynamic(() => import('./nginx-formatter/NginxFormatter'), { ssr: false }),
 
   // Web Tools (continued)
   'http-status': dynamic(() => import('./http-status/HttpStatusReference'), { ssr: false }),

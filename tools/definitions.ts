@@ -859,6 +859,13 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Formatter',
     keywords: ['graphql', 'gql', 'format', 'query'],
   },
+  {
+    id: 'nginx-formatter',
+    name: 'Nginx Config Formatter',
+    description: 'Format Nginx configuration files with proper indentation and block structure',
+    category: 'Formatter',
+    keywords: ['nginx', 'config', 'nginx.conf', 'format', 'server', 'location'],
+  },
 
   // Web Tools (continued)
   {
