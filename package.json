@@ -16,6 +16,7 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "browser-image-compression": "^2.0.2",
     "colorthief": "^2.6.0",
     "composerize": "^1.7.5",

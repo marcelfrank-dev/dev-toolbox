@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import { generateBaseMetadata } from '@/lib/seo'
 import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
@@ -53,6 +54,7 @@ export default function RootLayout({
         </ToastProvider>
         <CookieConsentBanner />
         <ErrorSuppressor />
+        <Analytics />
       </body>
     </html>
   )
