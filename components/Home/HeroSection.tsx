@@ -26,6 +26,24 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
         A collection of free, fast developer tools that run entirely in your browser.
         No data ever leaves your machine.
       </p>
+
+      <div className="mt-10 flex justify-center">
+        <a
+          href="https://www.producthunt.com/products/tiny-dev-tools?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-tiny-dev-tools"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-90 transition-opacity"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1058697&theme=light&t=1767626611605"
+            alt="Tiny Dev Tools - 170+ Privacy-First Developer Tools. Runs in your browser. | Product Hunt"
+            width="250"
+            height="54"
+          />
+        </a>
+      </div>
+
       <div className="mt-10 flex items-center justify-center gap-8 text-sm text-zinc-400">
         <div className="flex flex-col items-center">
           <span className="text-3xl font-bold text-violet-400">{toolCount}</span>
