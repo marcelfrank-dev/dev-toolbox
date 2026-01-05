@@ -8,6 +8,7 @@ import { ToastProvider } from '@/components/Toast'
 import { StructuredData } from '@/components/StructuredData'
 import { CookieConsentBanner } from '@/components/CookieConsentBanner'
 import { ErrorSuppressor } from '@/components/ErrorSuppressor'
+import { FeedbackButton } from '@/components/Feedback/FeedbackButton'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -52,6 +53,7 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
+          <FeedbackButton />
         </ToastProvider>
         <CookieConsentBanner />
         <ErrorSuppressor />
