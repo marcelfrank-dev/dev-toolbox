@@ -744,13 +744,6 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['csv', 'markdown', 'table'],
   },
   {
-    id: 'curl',
-    name: 'Curl Converter',
-    description: 'Convert between different curl formats',
-    category: 'Converters & Formatters',
-    keywords: ['curl', 'converter'],
-  },
-  {
     id: 'dataurl',
     name: 'Data URL Tool',
     description: 'A versatile tool for data url tool',
@@ -1240,7 +1233,7 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Text & Analysis',
     keywords: ['whitespace', 'remover'],
   },
-],
+]
 
 export const categories = [
   'Converters & Formatters',

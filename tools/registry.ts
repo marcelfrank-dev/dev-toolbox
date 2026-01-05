@@ -123,7 +123,6 @@ const toolComponents: Record<string, ComponentType> = {
   'css-grid': dynamic(() => import('./css-grid/CssGridGenerator'), { ssr: false }),
   'css-units': dynamic(() => import('./css-units/CssUnitsReference'), { ssr: false }),
   'csv-markdown': dynamic(() => import('./csv-markdown/CsvToMarkdownTable'), { ssr: false }),
-  'curl': dynamic(() => import('./curl/CurlConverter'), { ssr: false }),
   'dataurl': dynamic(() => import('./dataurl/DataUrlTool'), { ssr: false }),
   'duplicate-lines': dynamic(() => import('./duplicate-lines/DuplicateRemover'), { ssr: false }),
   'emoji-picker': dynamic(() => import('./emoji-picker/EmojiPicker'), { ssr: false }),
