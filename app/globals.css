@@ -23,6 +23,17 @@
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
   --ring: #8b5cf6; /* Violet ring */
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  --animate-float: float 4s ease-in-out infinite;
 }
 
 body {
@@ -97,15 +108,10 @@ body {
   font-family: var(--font-jetbrains), monospace;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.animate-float {
+  animation: var(--animate-float);
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+.logo-filter {
+  filter: invert(1) hue-rotate(180deg) brightness(1.2);
 }

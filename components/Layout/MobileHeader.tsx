@@ -38,7 +38,7 @@ export function MobileHeader({ onMenuClick, appName }: MobileHeaderProps) {
                             alt="Logo"
                             width={28}
                             height={28}
-                            className="rounded-full"
+                            className="rounded-full logo-filter"
                         />
                         <h1 className="text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                             {appName}

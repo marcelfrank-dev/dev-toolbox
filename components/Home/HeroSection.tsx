@@ -19,7 +19,7 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
               alt="Tiny Dev Tools Logo"
               width={100}
               height={100}
-              className="rounded-full shadow-2xl"
+              className="rounded-full shadow-2xl logo-filter"
               priority
             />
           </div>
