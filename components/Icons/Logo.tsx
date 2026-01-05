@@ -8,12 +8,6 @@ interface LogoProps {
 export function Logo({ className = "", size = 100 }: LogoProps) {
     return (
         <div className={`relative flex items-center justify-center ${className}`}>
-            {/* Outer glow */}
-            <div
-                className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full"
-                style={{ width: size, height: size }}
-            />
-
             <svg
                 width={size}
                 height={size}
