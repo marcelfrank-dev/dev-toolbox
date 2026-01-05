@@ -11,7 +11,7 @@ export function SplitLayout({ sidebar, content }: SplitLayoutProps) {
   return (
     <div className="flex h-screen pt-16 lg:pt-0 overflow-hidden flex-1">
       {sidebar}
-      <div className="flex-1 overflow-hidden relative">
+      <div className="flex-1 relative">
         {content}
       </div>
     </div>
