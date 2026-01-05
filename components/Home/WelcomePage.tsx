@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
 import { HeroSection } from './HeroSection'
-import { AdPlacement } from './AdPlacement'
 import { WelcomePageSearch } from './WelcomePageSearch'
 import { CategorySection } from './CategorySection'
 import { PopularToolsSection } from './PopularToolsSection'
@@ -19,7 +18,7 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
   const [hasActiveSearch, setHasActiveSearch] = useState(false)
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto bg-transparent">
+    <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden bg-transparent">
       {/* Top Banner - ClipStack */}
       <ClipStackBanner />
 
@@ -57,10 +56,6 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
       {/* Show categories when no active search */}
       {!hasActiveSearch && (
         <>
-          {/* In-Content Ad - AdSense */}
-          <div className="px-6 my-4">
-            <AdPlacement position="1593654749" className="w-full glass-card rounded-xl p-4" />
-          </div>
 
           {/* Categories with Top Tools */}
           <CategorySection tools={tools} onToolClick={onToolClick} />
