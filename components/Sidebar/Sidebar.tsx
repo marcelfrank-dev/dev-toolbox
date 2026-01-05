@@ -26,20 +26,22 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
-        setExpandedCategories(new Set(parsed))
+        const initial = Array.isArray(parsed) && parsed.length > 0 ? [parsed[0]] : []
+        setExpandedCategories(new Set(initial))
       } catch {
         // Ignore parse errors
       }
-    } else {
-      // Default: expand all categories
-      setExpandedCategories(new Set(categories))
+    } else if (categories.length > 0) {
+      // Default: expand only the first category
+      setExpandedCategories(new Set([categories[0]]))
     }
   }, [])
 
-  // Save expanded categories to localStorage
+  // Save expanded categories to localStorage (only the first one)
   useEffect(() => {
-    if (expandedCategories.size > 0) {
-      localStorage.setItem('sidebar-expanded-categories', JSON.stringify([...expandedCategories]))
+    const categoriesArray = Array.from(expandedCategories)
+    if (categoriesArray.length > 0) {
+      localStorage.setItem('sidebar-expanded-categories', JSON.stringify([categoriesArray[0]]))
     }
   }, [expandedCategories])
 
@@ -98,15 +100,23 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
 
   const toggleCategory = (category: string) => {
     setExpandedCategories((prev) => {
-      const next = new Set(prev)
-      if (next.has(category)) {
-        next.delete(category)
-      } else {
+      const next = new Set<string>()
+      if (!prev.has(category)) {
         next.add(category)
       }
       return next
     })
   }
+
+  // Auto-expand first matching category during search
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      const firstMatch = categories.find((cat) => (toolsByCategory[cat]?.length || 0) > 0)
+      if (firstMatch) {
+        setExpandedCategories(new Set([firstMatch]))
+      }
+    }
+  }, [searchQuery, toolsByCategory])
 
   // Keyboard shortcut: Cmd/Ctrl + K to focus search
   useEffect(() => {
@@ -174,7 +184,7 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto px-2">
+          <nav className="flex min-h-0 flex-1 flex-col px-2 overflow-hidden">
             {categories
               .filter((category) => toolsByCategory[category]?.length > 0)
               .map((category) => (

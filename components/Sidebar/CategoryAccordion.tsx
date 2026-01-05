@@ -23,21 +23,14 @@ export function CategoryAccordion({
   onToolClick,
   searchQuery,
 }: CategoryAccordionProps) {
-  // Auto-expand if search is active and has matches
-  useEffect(() => {
-    if (searchQuery && tools.length > 0 && !isExpanded) {
-      onToggle()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery, tools.length, isExpanded])
 
   if (tools.length === 0) return null
 
   return (
-    <div className="border-b border-white/5">
+    <div className={`flex flex-col border-b border-white/5 ${isExpanded ? 'flex-1 min-h-0' : ''}`}>
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between px-3 py-3 text-left transition-colors hover:bg-white/5"
+        className="flex w-full shrink-0 items-center justify-between px-3 py-3 text-left transition-colors hover:bg-white/5"
         aria-expanded={isExpanded}
       >
         <span className="text-sm font-semibold text-white/90">{category}</span>
@@ -60,10 +53,10 @@ export function CategoryAccordion({
         </div>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-200 ${isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+        className={`flex-1 min-h-0 overflow-y-auto px-3 pb-3 transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'hidden opacity-0'
           }`}
       >
-        <div className="space-y-1 px-3 pb-3">
+        <div className="space-y-1">
           {tools.map((tool) => (
             <ToolNavItem
               key={tool.id}
