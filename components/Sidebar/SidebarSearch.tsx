@@ -8,8 +8,8 @@ interface SidebarSearchProps {
 
 export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchProps) {
   return (
-    <div className="sticky top-0 z-10 bg-black/40 backdrop-blur-md pb-3 pt-2">
-      <div className="relative px-2">
+    <div className="pb-3 pt-2">
+      <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -20,7 +20,7 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="absolute left-5 top-1/2 -translate-y-1/2 text-white/40"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30"
         >
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -30,12 +30,12 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Search tools..."
-          className="w-full rounded-lg border border-white/5 bg-white/5 py-2 pl-9 pr-8 text-sm text-white placeholder-white/30 transition-all focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-primary/50 backdrop-blur-sm"
+          className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-8 text-sm text-white placeholder-white/20 transition-all focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-primary/50"
         />
         {value && (
           <button
             onClick={() => onChange('')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded p-1 text-white/40 hover:bg-white/10 hover:text-white"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-white/40 hover:bg-white/10 hover:text-white"
             aria-label="Clear search"
           >
             <svg
@@ -56,7 +56,7 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
         )}
       </div>
       {value && resultsCount !== undefined && (
-        <p className="mt-2 text-xs text-zinc-500">
+        <p className="mt-2 px-2 text-xs text-zinc-500">
           {resultsCount} tool{resultsCount !== 1 ? 's' : ''} found
         </p>
       )}
