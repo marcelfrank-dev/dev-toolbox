@@ -197,6 +197,7 @@ const toolComponents: Record<string, ComponentType> = {
   'api-mock-generator': dynamic(() => import('./api-mock-generator/ApiMockGenerator'), { ssr: false }),
   'ai-prompt-optimizer': dynamic(() => import('./ai/prompt-optimizer/AIPromptOptimizer'), { ssr: false }),
   'ai-commit-generator': dynamic(() => import('./ai/commit-generator/AICommitGenerator'), { ssr: false }),
+  'css-unit-converter': dynamic(() => import('./css-units/CssUnitConverter'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions

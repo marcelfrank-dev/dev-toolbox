@@ -1261,6 +1261,13 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'AI',
     keywords: ['ai', 'git', 'commit', 'conventional', 'message', 'generator', 'diff'],
   },
+  {
+    id: 'css-unit-converter',
+    name: 'CSS Unit Converter',
+    description: 'Convert between px, rem, em, %, vw, vh and more',
+    category: 'Converters & Formatters',
+    keywords: ['css', 'unit', 'converter', 'px', 'rem', 'em', 'conversion'],
+  },
 ]
 
 export const categories = [
