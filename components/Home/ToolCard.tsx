@@ -21,12 +21,12 @@ export function ToolCard({ tool, onClick, isPopular }: ToolCardProps & { isPopul
         }`}
     >
       <div className="flex w-full items-start justify-between gap-3">
-        <h3 className={`text-lg font-semibold transition-colors ${isPopular ? 'text-primary-foreground' : 'text-white/90 group-hover:text-white'}`}>
+        <h3 className={`text-lg font-semibold transition-colors ${isPopular ? 'text-primary-foreground' : 'text-white group-hover:text-white'}`}>
           {tool.name}
         </h3>
         {/* Category badge can be optional or styled differently */}
       </div>
-      <p className="text-sm leading-relaxed text-zinc-400 line-clamp-2">{tool.description}</p>
+      <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">{tool.description}</p>
 
       <div className="mt-auto pt-2 flex items-center text-xs text-secondary opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
         Open Tool →

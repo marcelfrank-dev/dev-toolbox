@@ -8,7 +8,7 @@ interface SidebarSearchProps {
 
 export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchProps) {
   return (
-    <div className="sticky top-0 z-10 bg-black/20 backdrop-blur-md pb-3 pt-2">
+    <div className="sticky top-0 z-10 bg-black/40 backdrop-blur-md pb-3 pt-2">
       <div className="relative px-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
