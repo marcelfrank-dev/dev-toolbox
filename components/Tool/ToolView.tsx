@@ -13,14 +13,14 @@ export function ToolView({ tool, onClose }: ToolViewProps) {
 
   return (
     <div className="flex flex-col h-full bg-transparent">
-      <header className="flex items-center justify-between border-b border-white/5 bg-black/20 px-6 py-4 backdrop-blur-md">
+      <header className="flex items-center justify-between border-b border-[var(--border)] bg-[var(--card)] px-6 py-4 backdrop-blur-md">
         <div>
-          <h1 className="text-xl font-bold text-white">{tool.name}</h1>
-          <p className="mt-1 text-sm text-zinc-400">{tool.description}</p>
+          <h1 className="text-xl font-bold text-[var(--foreground)]">{tool.name}</h1>
+          <p className="mt-1 text-sm text-[var(--foreground)]/70">{tool.description}</p>
         </div>
         <button
           onClick={onClose}
-          className="rounded-lg p-2 text-zinc-400 hover:bg-white/10 hover:text-white transition-colors"
+          className="rounded-lg p-2 text-[var(--foreground)]/60 hover:bg-[var(--card)] hover:text-[var(--foreground)] transition-colors"
           aria-label="Close tool"
         >
           <svg

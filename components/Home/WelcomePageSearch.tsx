@@ -89,7 +89,7 @@ export function WelcomePageSearch({ tools, onToolClick, onSearchChange }: Welcom
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground)]/50"
         >
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -99,12 +99,12 @@ export function WelcomePageSearch({ tools, onToolClick, onSearchChange }: Welcom
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search for tools... (e.g., 'json format', 'base64', 'color')"
-          className="w-full rounded-xl border border-zinc-800 bg-zinc-900/50 py-4 pl-12 pr-4 text-zinc-100 placeholder-zinc-500 transition-colors focus:border-zinc-700 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+          className="w-full rounded-xl border border-[var(--border)] bg-[var(--card)] py-4 pl-12 pr-4 text-[var(--foreground)] placeholder-[var(--foreground)]/50 transition-colors focus:border-[var(--primary)]/50 focus:bg-[var(--card)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1.5 text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded p-1.5 text-[var(--foreground)]/50 hover:bg-[var(--card)] hover:text-[var(--foreground)] transition-colors"
             aria-label="Clear search"
           >
             <svg
@@ -129,7 +129,7 @@ export function WelcomePageSearch({ tools, onToolClick, onSearchChange }: Welcom
         <div className="mx-auto mt-6 max-w-4xl">
           {searchResults.length > 0 ? (
             <>
-              <p className="mb-4 text-sm text-zinc-400">
+              <p className="mb-4 text-sm text-[var(--foreground)]/60">
                 Found {searchResults.length} tool{searchResults.length !== 1 ? 's' : ''}
               </p>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -138,15 +138,15 @@ export function WelcomePageSearch({ tools, onToolClick, onSearchChange }: Welcom
                 ))}
               </div>
               {searchResults.length > 12 && (
-                <p className="mt-4 text-center text-sm text-zinc-500">
+                <p className="mt-4 text-center text-sm text-[var(--foreground)]/60">
                   Showing 12 of {searchResults.length} results. Use the sidebar to see all.
                 </p>
               )}
             </>
           ) : (
-            <div className="rounded-lg border border-zinc-800 bg-zinc-900/30 p-8 text-center">
-              <p className="text-zinc-400">No tools found matching &quot;{searchQuery}&quot;</p>
-              <p className="mt-2 text-sm text-zinc-500">Try different keywords or browse by category below</p>
+            <div className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-8 text-center">
+              <p className="text-[var(--foreground)]/70">No tools found matching &quot;{searchQuery}&quot;</p>
+              <p className="mt-2 text-sm text-[var(--foreground)]/60">Try different keywords or browse by category below</p>
             </div>
           )}
         </div>
