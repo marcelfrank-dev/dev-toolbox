@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import { Tool } from '@/tools/types'
+import { Logo } from '../Icons/Logo';
 
 interface MobileHeaderProps {
     onMenuClick: () => void
@@ -33,13 +32,7 @@ export function MobileHeader({ onMenuClick, appName }: MobileHeaderProps) {
                         </svg>
                     </button>
                     <div className="flex items-center gap-2">
-                        <Image
-                            src="/logo.png"
-                            alt="Logo"
-                            width={28}
-                            height={28}
-                            className="rounded-full logo-filter"
-                        />
+                        <Logo size={28} />
                         <h1 className="text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
                             {appName}
                         </h1>
