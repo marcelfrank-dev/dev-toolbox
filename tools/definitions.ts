@@ -1247,6 +1247,20 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Generators',
     keywords: ['api', 'mock', 'msw', 'json', 'scaffold', 'boilerplate', 'testing'],
   },
+  {
+    id: 'ai-prompt-optimizer',
+    name: 'AI Prompt Optimizer',
+    description: 'Transform simple prompts into professional, structured "mega-prompts"',
+    category: 'AI',
+    keywords: ['ai', 'prompt', 'optimizer', 'engineering', 'mega-prompt', 'refine'],
+  },
+  {
+    id: 'ai-commit-generator',
+    name: 'AI Commit Message Generator',
+    description: 'Generate professional Conventional Commits from your code changes or descriptions',
+    category: 'AI',
+    keywords: ['ai', 'git', 'commit', 'conventional', 'message', 'generator', 'diff'],
+  },
 ]
 
 export const categories = [
