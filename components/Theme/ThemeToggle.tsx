@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useTheme } from './ThemeProvider'
 
 interface ThemeToggleProps {
@@ -9,6 +10,12 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className = '', size = 'md' }: ThemeToggleProps) {
   const { theme, toggleTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const sizeClasses = {
     sm: 'w-8 h-8',
@@ -20,6 +27,13 @@ export function ThemeToggle({ className = '', size = 'md' }: ThemeToggleProps) {
     sm: 16,
     md: 20,
     lg: 24,
+  }
+
+  // During SSR, show a placeholder
+  if (!mounted) {
+    return (
+      <div className={`${sizeClasses[size]} rounded-lg ${className}`} aria-hidden="true" />
+    )
   }
 
   return (
