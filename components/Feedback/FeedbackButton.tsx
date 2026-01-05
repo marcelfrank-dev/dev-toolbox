@@ -8,27 +8,32 @@ export function FeedbackButton() {
 
     return (
         <>
-            <button
-                onClick={() => setIsOpen(true)}
-                className="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-violet-600 text-white shadow-lg shadow-violet-500/20 transition-all hover:scale-110 hover:bg-violet-500 active:scale-95 lg:h-16 lg:w-16"
-                aria-label="Send feedback"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+            <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-center gap-2">
+                <button
+                    onClick={() => setIsOpen(true)}
+                    className="flex h-14 w-14 items-center justify-center rounded-full bg-violet-600 text-white shadow-lg shadow-violet-500/20 transition-all hover:scale-110 hover:bg-violet-500 active:scale-95 lg:h-16 lg:w-16"
+                    aria-label="Send feedback"
                 >
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    <line x1="12" y1="7" x2="12" y2="13" />
-                    <line x1="9" y1="10" x2="15" y2="10" />
-                </svg>
-            </button>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        <line x1="12" y1="7" x2="12" y2="13" />
+                        <line x1="9" y1="10" x2="15" y2="10" />
+                    </svg>
+                </button>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-violet-400/80 lg:text-xs">
+                    New Tool
+                </span>
+            </div>
 
             <FeedbackModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </>
