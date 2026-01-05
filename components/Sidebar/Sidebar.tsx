@@ -145,7 +145,7 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
       <aside
         ref={sidebarRef}
         className={`fixed left-0 top-0 z-50 h-full w-72 transform border-r border-white/10 bg-zinc-950/95 backdrop-blur-2xl transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) lg:relative lg:z-auto lg:translate-x-0 ${isMobileOpen ? 'translate-x-0 shadow-2xl shadow-black/50' : '-translate-x-full lg:translate-x-0'
-          } lg:bg-black/40 lg:backdrop-blur-xl border-r-0 border-y-0 border-l-0`}
+          } lg:bg-zinc-950/80 lg:backdrop-blur-xl border-r-0 border-y-0 border-l-0`}
         aria-label="Navigation"
       >
         <div className="flex h-full flex-col">
