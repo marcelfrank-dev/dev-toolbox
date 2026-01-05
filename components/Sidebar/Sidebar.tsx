@@ -135,14 +135,14 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`fixed left-0 top-0 z-50 h-full w-72 transform border-r border-white/10 bg-black/40 backdrop-blur-xl transition-transform duration-300 lg:relative lg:z-auto lg:translate-x-0 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-          } glass-panel border-r-0 border-y-0 border-l-0`}
+        className={`fixed left-0 top-0 z-50 h-full w-72 transform border-r border-white/10 bg-zinc-950/95 backdrop-blur-2xl transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) lg:relative lg:z-auto lg:translate-x-0 ${isMobileOpen ? 'translate-x-0 shadow-2xl shadow-black/50' : '-translate-x-full lg:translate-x-0'
+          } lg:bg-black/40 lg:backdrop-blur-xl border-r-0 border-y-0 border-l-0`}
         aria-label="Navigation"
       >
         <div className="flex h-full flex-col">
-          {/* Mobile close button */}
-          <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 lg:hidden">
-            <h2 className="text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Dev Toolbox</h2>
+          {/* Mobile Header (Search and Title) */}
+          <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 lg:hidden">
+            <h2 className="text-lg font-bold text-white">Navigation</h2>
             <button
               onClick={onMobileClose}
               className="rounded-lg p-2 text-white/50 hover:bg-white/10 hover:text-white"
@@ -159,8 +159,7 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
+                <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
           </div>

@@ -9,9 +9,11 @@ interface SplitLayoutProps {
 
 export function SplitLayout({ sidebar, content }: SplitLayoutProps) {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen pt-16 lg:pt-0 overflow-hidden flex-1">
       {sidebar}
-      {content}
+      <div className="flex-1 overflow-hidden relative">
+        {content}
+      </div>
     </div>
   )
 }

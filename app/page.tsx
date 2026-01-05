@@ -6,7 +6,7 @@ import { Tool } from '@/tools/types'
 import { getToolFromUrl, setToolInUrl, updateMetaTags } from '@/lib/urlState'
 import { SplitLayout } from '@/components/Layout/SplitLayout'
 import { ContentArea } from '@/components/Layout/ContentArea'
-import { MobileMenuButton } from '@/components/Layout/MobileMenuButton'
+import { MobileHeader } from '@/components/Layout/MobileHeader'
 import { Sidebar } from '@/components/Sidebar/Sidebar'
 import { WelcomePage } from '@/components/Home/WelcomePage'
 import { ToolView } from '@/components/Tool/ToolView'
@@ -68,10 +68,11 @@ export default function Home() {
   }, [activeTool])
 
   return (
-    <>
-      {!isMobileSidebarOpen && (
-        <MobileMenuButton onClick={() => setIsMobileSidebarOpen(true)} />
-      )}
+    <div className="flex h-screen flex-col lg:flex-row">
+      <MobileHeader
+        onMenuClick={() => setIsMobileSidebarOpen(true)}
+        appName="Tiny Dev Tools"
+      />
       <SplitLayout
         sidebar={
           <Sidebar
@@ -92,6 +93,6 @@ export default function Home() {
           </ContentArea>
         }
       />
-    </>
+    </div>
   )
 }
