@@ -5,7 +5,6 @@ import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
 import { SidebarSearch } from './SidebarSearch'
 import { CategoryAccordion } from './CategoryAccordion'
-import { AdPlacement } from '@/components/Home/AdPlacement'
 
 interface SidebarProps {
   tools: Tool[]
@@ -215,10 +214,6 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
             )}
           </nav>
 
-          {/* Sidebar Ad (desktop only) */}
-          <div className="hidden border-t border-zinc-800 px-4 pb-4 pt-3 lg:block">
-            <AdPlacement position="1190330064" className="w-full" />
-          </div>
         </div>
       </aside>
     </>
