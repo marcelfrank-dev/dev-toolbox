@@ -27,15 +27,15 @@ export function CategoryAccordion({
   if (tools.length === 0) return null
 
   return (
-    <div className={`flex flex-col border-b border-white/5 ${isExpanded ? 'flex-1 min-h-0' : ''}`}>
+    <div className={`flex flex-col border-b border-[var(--border)] ${isExpanded ? 'flex-1 min-h-0' : ''}`}>
       <button
         onClick={onToggle}
-        className="flex w-full shrink-0 items-center justify-between px-3 py-3 text-left transition-colors hover:bg-white/5"
+        className="flex w-full shrink-0 items-center justify-between px-3 py-3 text-left transition-colors hover:bg-[var(--card)]"
         aria-expanded={isExpanded}
       >
-        <span className="text-sm font-semibold text-white/90">{category}</span>
+        <span className="text-sm font-semibold text-[var(--foreground)]">{category}</span>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-white/50">({tools.length})</span>
+          <span className="text-xs text-[var(--foreground)]/50">({tools.length})</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -46,7 +46,7 @@ export function CategoryAccordion({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={`text-white/40 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+            className={`text-[var(--foreground)]/40 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>

@@ -20,7 +20,7 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--foreground)]/30"
         >
           <circle cx="11" cy="11" r="8" />
           <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -30,12 +30,12 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Search tools..."
-          className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-8 text-sm text-white placeholder-white/20 transition-all focus:border-primary/50 focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-primary/50"
+          className="w-full rounded-lg border border-[var(--border)] bg-[var(--card)] py-2 pl-9 pr-8 text-sm text-[var(--foreground)] placeholder-[var(--foreground)]/30 transition-all focus:border-[var(--primary)]/50 focus:bg-[var(--card)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]/50"
         />
         {value && (
           <button
             onClick={() => onChange('')}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-white/40 hover:bg-white/10 hover:text-white"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[var(--foreground)]/40 hover:bg-[var(--card)] hover:text-[var(--foreground)] transition-colors"
             aria-label="Clear search"
           >
             <svg
@@ -56,7 +56,7 @@ export function SidebarSearch({ value, onChange, resultsCount }: SidebarSearchPr
         )}
       </div>
       {value && resultsCount !== undefined && (
-        <p className="mt-2 px-2 text-xs text-zinc-500">
+        <p className="mt-2 px-2 text-xs text-[var(--foreground)]/60">
           {resultsCount} tool{resultsCount !== 1 ? 's' : ''} found
         </p>
       )}

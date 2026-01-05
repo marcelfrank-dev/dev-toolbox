@@ -21,7 +21,7 @@ export function CategorySection({ tools, onToolClick }: CategorySectionProps) {
 
   return (
     <div className="px-6 pb-12">
-      <h2 className="mb-6 text-2xl font-bold text-white tracking-tight">Browse by Category</h2>
+      <h2 className="mb-6 text-2xl font-bold text-[var(--foreground)] tracking-tight">Browse by Category</h2>
       <div className="space-y-8">
         {categories
           .filter((category) => toolsByCategory[category]?.length > 0)
@@ -35,8 +35,8 @@ export function CategorySection({ tools, onToolClick }: CategorySectionProps) {
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-cyan-500/5 opacity-0 group-hover/card:opacity-100 transition-opacity" />
 
                 <div className="mb-4 flex items-center justify-between relative z-10">
-                  <h3 className="text-xl font-semibold text-white/90">{category}</h3>
-                  <span className="rounded-full bg-white/5 border border-white/10 px-3 py-1 text-xs font-medium text-white/70">
+                  <h3 className="text-xl font-semibold text-[var(--foreground)]">{category}</h3>
+                  <span className="rounded-full bg-[var(--card)] border border-[var(--border)] px-3 py-1 text-xs font-medium text-[var(--foreground)]/70">
                     {categoryTools.length} tool{categoryTools.length !== 1 ? 's' : ''}
                   </span>
                 </div>
@@ -46,7 +46,7 @@ export function CategorySection({ tools, onToolClick }: CategorySectionProps) {
                   ))}
                 </div>
                 {remainingCount > 0 && (
-                  <p className="mt-4 text-sm text-zinc-500 relative z-10">
+                  <p className="mt-4 text-sm text-[var(--foreground)]/60 relative z-10">
                     + {remainingCount} more tool{remainingCount !== 1 ? 's' : ''} in this category. Use the sidebar to
                     browse all.
                   </p>

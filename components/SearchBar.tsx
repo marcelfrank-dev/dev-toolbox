@@ -23,7 +23,7 @@ export function SearchBar({
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground)]/50"
       >
         <circle cx="11" cy="11" r="8" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -33,12 +33,12 @@ export function SearchBar({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-zinc-800 bg-zinc-900/50 py-3 pl-12 pr-4 text-zinc-100 placeholder-zinc-500 transition-colors focus:border-zinc-700 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-500/20"
+        className="w-full rounded-xl border border-[var(--border)] bg-[var(--card)] py-3 pl-12 pr-4 text-[var(--foreground)] placeholder-[var(--foreground)]/50 transition-colors focus:border-[var(--primary)]/50 focus:bg-[var(--card)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20"
       />
       {value && (
         <button
           onClick={() => onChange('')}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1 text-[var(--foreground)]/50 hover:bg-[var(--card)] hover:text-[var(--foreground)] transition-colors"
           aria-label="Clear search"
         >
           <svg

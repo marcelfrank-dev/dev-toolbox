@@ -19,10 +19,10 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
           </div>
         </div>
       </div>
-      <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg">
+      <h1 className="text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-5xl lg:text-6xl drop-shadow-lg">
         Tiny <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">Dev Tools</span>
       </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+      <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[var(--foreground)]/80">
         A collection of free, fast developer tools that run entirely in your browser.
         No data ever leaves your machine.
       </p>
@@ -44,14 +44,14 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
         </a>
       </div>
 
-      <div className="mt-10 flex items-center justify-center gap-8 text-sm text-zinc-400">
+      <div className="mt-10 flex items-center justify-center gap-8 text-sm text-[var(--foreground)]/60">
         <div className="flex flex-col items-center">
-          <span className="text-3xl font-bold text-violet-400">{toolCount}</span>
+          <span className="text-3xl font-bold text-[var(--primary)]">{toolCount}</span>
           <span className="mt-1 font-medium">Tools</span>
         </div>
-        <div className="w-px h-10 bg-white/10" />
+        <div className="w-px h-10 bg-[var(--border)]" />
         <div className="flex flex-col items-center">
-          <span className="text-3xl font-bold text-cyan-400">{categoryCount}</span>
+          <span className="text-3xl font-bold text-[var(--secondary)]">{categoryCount}</span>
           <span className="mt-1 font-medium">Categories</span>
         </div>
       </div>
