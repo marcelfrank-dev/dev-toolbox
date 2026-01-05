@@ -5,6 +5,7 @@ import { Tool } from '@/tools/types'
 import { categories } from '@/tools/definitions'
 import { SidebarSearch } from './SidebarSearch'
 import { CategoryAccordion } from './CategoryAccordion'
+import { ThemeToggle } from '../Theme/ThemeToggle'
 
 interface SidebarProps {
   tools: Tool[]
@@ -135,7 +136,7 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-40 bg-[var(--background)]/80 backdrop-blur-sm lg:hidden"
           onClick={onMobileClose}
           aria-hidden="true"
         />
@@ -144,17 +145,22 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
       {/* Sidebar */}
       <aside
         ref={sidebarRef}
-        className={`fixed left-0 top-0 z-50 h-full w-72 transform border-r border-white/10 bg-zinc-950/95 backdrop-blur-2xl transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) lg:relative lg:z-auto lg:translate-x-0 ${isMobileOpen ? 'translate-x-0 shadow-2xl shadow-black/50' : '-translate-x-full lg:translate-x-0'
-          } lg:bg-zinc-950/80 lg:backdrop-blur-xl border-r-0 border-y-0 border-l-0`}
+        className={`fixed left-0 top-0 z-50 h-full w-72 transform border-r border-[var(--border)] bg-[var(--card)] backdrop-blur-2xl transition-all duration-300 cubic-bezier(0.4, 0, 0.2, 1) lg:relative lg:z-auto lg:translate-x-0 ${isMobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'
+          } lg:backdrop-blur-xl`}
         aria-label="Navigation"
       >
         <div className="flex h-full flex-col">
+          {/* Desktop Theme Toggle */}
+          <div className="hidden lg:flex items-center justify-end px-4 pt-4 pb-2">
+            <ThemeToggle size="sm" />
+          </div>
+
           {/* Mobile Header (Search and Title) */}
-          <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 lg:hidden">
-            <h2 className="text-lg font-bold text-white">Navigation</h2>
+          <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-4 lg:hidden">
+            <h2 className="text-lg font-bold text-[var(--foreground)]">Navigation</h2>
             <button
               onClick={onMobileClose}
-              className="rounded-lg p-2 text-white/50 hover:bg-white/10 hover:text-white"
+              className="rounded-lg p-2 text-[var(--foreground)]/50 transition-colors hover:bg-[var(--foreground)]/10 hover:text-[var(--foreground)]"
               aria-label="Close sidebar"
             >
               <svg
@@ -203,10 +209,10 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
               ))}
             {filteredTools.length === 0 && searchQuery && (
               <div className="px-4 py-8 text-center">
-                <p className="text-sm text-zinc-500">No tools found</p>
+                <p className="text-sm text-[var(--foreground)]/60">No tools found</p>
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-2 text-xs text-emerald-400 hover:text-emerald-300"
+                  className="mt-2 text-xs text-[var(--secondary)] hover:text-[var(--secondary)]/80 transition-colors"
                 >
                   Clear
                 </button>

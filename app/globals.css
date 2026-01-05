@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  /* Deep Space Theme - Base Colors */
+  /* Dark Theme - Deep Space Theme (Default) */
   --background: #030014; /* Deep violet-black */
   --foreground: #ffffff;
   
@@ -23,38 +23,83 @@
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
   --ring: #8b5cf6; /* Violet ring */
+}
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+:root.light {
+  /* Light Theme - Clean and Readable */
+  --background: #fafafa; /* Very light gray */
+  --foreground: #1a1a1a; /* Near black for excellent readability */
+  
+  /* Primary Accents (Violet/Blue - slightly adjusted for light mode) */
+  --primary: #7c3aed; /* Slightly darker violet for better contrast */
+  --primary-foreground: #ffffff;
+  
+  /* Secondary Accents (Cyan/Teal - adjusted for light mode) */
+  --secondary: #0891b2; /* Darker cyan for better visibility */
+  --secondary-foreground: #ffffff;
+  
+  /* Surface Colors */
+  --card: rgba(255, 255, 255, 0.8);
+  --card-foreground: #1a1a1a;
+  --popover: rgba(255, 255, 255, 0.95);
+  --popover-foreground: #1a1a1a;
+  
+  /* Borders */
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.1);
+  --ring: #7c3aed; /* Violet ring */
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-10px);
+  }
+}
 
+:root {
   --animate-float: float 4s ease-in-out infinite;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  /* Mesh Gradient Background */
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme mesh gradient background */
+:root:not(.light) body {
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 15% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
   background-attachment: fixed;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  overflow-x: hidden;
 }
 
-/* Glassmorphism Utilities */
+/* Light theme subtle gradient background */
+:root.light body {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(8, 145, 178, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 15% 70%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Glassmorphism Utilities - Dark Theme */
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .glass-card {
@@ -65,11 +110,22 @@ body {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.light .glass-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
 }
 
 /* Scrollbar */
@@ -88,10 +144,22 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 /* Selection */
 ::selection {
   background: rgba(139, 92, 246, 0.3);
   color: white;
+}
+
+.light ::selection {
+  background: rgba(124, 58, 237, 0.2);
+  color: #1a1a1a;
 }
 
 /* Animations */

@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { generateBaseMetadata } from '@/lib/seo'
 import { ToastProvider } from '@/components/Toast'
+import { ThemeProvider } from '@/components/Theme/ThemeProvider'
 import { StructuredData } from '@/components/StructuredData'
 import { CookieConsentBanner } from '@/components/CookieConsentBanner'
 import { ErrorSuppressor } from '@/components/ErrorSuppressor'
@@ -36,27 +37,29 @@ export default function RootLayout({
         )}
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} h-screen overflow-hidden antialiased bg-background text-foreground`}>
-        <ToastProvider>
-          <main className="h-full">{children}</main>
-          <footer className="border-t border-zinc-800 bg-zinc-950/80">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-xs text-zinc-500 sm:px-6 lg:px-8">
-              <p className="hidden sm:block">
-                © {new Date().getFullYear()} Tiny Dev Tools. All rights reserved.
-              </p>
-              <div className="flex flex-1 justify-end gap-4 sm:flex-none">
-                <Link href="/imprint" className="hover:text-zinc-300">
-                  Imprint
-                </Link>
-                <Link href="/privacy" className="hover:text-zinc-300">
-                  Privacy
-                </Link>
+        <ThemeProvider>
+          <ToastProvider>
+            <main className="h-full">{children}</main>
+            <footer className="border-t border-[var(--border)] bg-[var(--card)]">
+              <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-xs text-[var(--foreground)]/60 sm:px-6 lg:px-8">
+                <p className="hidden sm:block">
+                  © {new Date().getFullYear()} Tiny Dev Tools. All rights reserved.
+                </p>
+                <div className="flex flex-1 justify-end gap-4 sm:flex-none">
+                  <Link href="/imprint" className="hover:text-[var(--foreground)] transition-colors">
+                    Imprint
+                  </Link>
+                  <Link href="/privacy" className="hover:text-[var(--foreground)] transition-colors">
+                    Privacy
+                  </Link>
+                </div>
               </div>
-            </div>
-          </footer>
-          <FeedbackButton />
-        </ToastProvider>
-        <CookieConsentBanner />
-        <ErrorSuppressor />
+            </footer>
+            <FeedbackButton />
+          </ToastProvider>
+          <CookieConsentBanner />
+          <ErrorSuppressor />
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
