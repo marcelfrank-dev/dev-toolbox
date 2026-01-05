@@ -193,6 +193,8 @@ const toolComponents: Record<string, ComponentType> = {
   'vim-cheat': dynamic(() => import('./vim-cheat/VimCheatSheet'), { ssr: false }),
   'weight': dynamic(() => import('./weight/WeightConverter'), { ssr: false }),
   'whitespace-remover': dynamic(() => import('./whitespace-remover/WhitespaceRemover'), { ssr: false }),
+  'layout-playground': dynamic(() => import('./layout-playground/LayoutPlayground'), { ssr: false }),
+  'api-mock-generator': dynamic(() => import('./api-mock-generator/ApiMockGenerator'), { ssr: false }),
 }
 
 export const tools: Tool[] = toolDefinitions

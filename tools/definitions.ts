@@ -1233,6 +1233,20 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Text & Analysis',
     keywords: ['whitespace', 'remover'],
   },
+  {
+    id: 'layout-playground',
+    name: 'Modern Layout Playground',
+    description: 'Visually design and test Flexbox and CSS Grid layouts with live code generation',
+    category: 'Generators',
+    keywords: ['flexbox', 'grid', 'css', 'layout', 'playground', 'visual', 'tailwind'],
+  },
+  {
+    id: 'api-mock-generator',
+    name: 'API Mock Scaffolder',
+    description: 'Generate MSW, Fetch, or Axios mock boilerplate from a JSON response',
+    category: 'Generators',
+    keywords: ['api', 'mock', 'msw', 'json', 'scaffold', 'boilerplate', 'testing'],
+  },
 ]
 
 export const categories = [
