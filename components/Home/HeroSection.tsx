@@ -10,14 +10,16 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
     <div className="px-6 py-12 text-center lg:px-8 relative z-10">
       <div className="flex justify-center mb-8">
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-violet-500 to-emerald-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative bg-zinc-950 rounded-full p-1 ring-1 ring-white/10 shadow-2xl">
+          {/* Subtle glow effect */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-emerald-500/20 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+
+          <div className="relative animate-float transition-transform duration-500 group-hover:scale-105">
             <Image
               src="/logo.png"
               alt="Tiny Dev Tools Logo"
               width={100}
               height={100}
-              className="rounded-full"
+              className="rounded-full shadow-2xl"
               priority
             />
           </div>
