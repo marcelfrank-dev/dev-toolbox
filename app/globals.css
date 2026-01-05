@@ -111,7 +111,3 @@ body {
 .animate-float {
   animation: var(--animate-float);
 }
-
-.logo-filter {
-  filter: invert(1) hue-rotate(180deg) brightness(1.2);
-}

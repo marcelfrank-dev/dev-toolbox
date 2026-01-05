@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Logo } from '../Icons/Logo'
 
 interface HeroSectionProps {
   toolCount: number
@@ -14,14 +15,7 @@ export function HeroSection({ toolCount, categoryCount }: HeroSectionProps) {
           <div className="absolute -inset-2 bg-gradient-to-r from-violet-500/20 to-emerald-500/20 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
 
           <div className="relative animate-float transition-transform duration-500 group-hover:scale-105">
-            <Image
-              src="/logo.png"
-              alt="Tiny Dev Tools Logo"
-              width={100}
-              height={100}
-              className="rounded-full shadow-2xl logo-filter"
-              priority
-            />
+            <Logo size={100} />
           </div>
         </div>
       </div>
