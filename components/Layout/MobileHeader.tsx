@@ -1,5 +1,4 @@
-'use client'
-
+import Image from 'next/image'
 import { Tool } from '@/tools/types'
 
 interface MobileHeaderProps {
@@ -33,9 +32,18 @@ export function MobileHeader({ onMenuClick, appName }: MobileHeaderProps) {
                             <line x1="3" y1="18" x2="21" y2="18" />
                         </svg>
                     </button>
-                    <h1 className="text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
-                        {appName}
-                    </h1>
+                    <div className="flex items-center gap-2">
+                        <Image
+                            src="/logo.png"
+                            alt="Logo"
+                            width={28}
+                            height={28}
+                            className="rounded-lg"
+                        />
+                        <h1 className="text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+                            {appName}
+                        </h1>
+                    </div>
                 </div>
             </div>
         </header>

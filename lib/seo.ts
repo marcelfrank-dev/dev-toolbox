@@ -41,7 +41,7 @@ export function generateToolMetadata(tool: Tool): Metadata {
 
 export function generateBaseMetadata(): Metadata {
   const description =
-    'Tiny Dev Tools is a collection of 85+ free online developer utilities: JSON formatter, Base64 encoder, URL encoder, JWT decoder, UUID generator, hash generator, regex tester, and many more. All tools run entirely in your browser - no data leaves your machine. Privacy-first, instant, and completely free.'
+    'Tiny Dev Tools is a collection of 170+ free online developer utilities: JSON formatter, Base64 encoder, URL encoder, JWT decoder, UUID generator, hash generator, regex tester, and many more. All tools run entirely in your browser - no data leaves your machine. Privacy-first, instant, and completely free.'
   
   const keywords = [
     'tiny dev tools',
@@ -68,7 +68,7 @@ export function generateBaseMetadata(): Metadata {
   ].join(', ')
 
   return {
-    title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities | Privacy-First',
+    title: 'Tiny Dev Tools - 170+ Free Online Developer Utilities | Privacy-First',
     description,
     keywords,
     authors: [{ name: 'Tiny Dev Tools' }],
@@ -78,7 +78,7 @@ export function generateBaseMetadata(): Metadata {
       canonical: BASE_URL,
     },
     openGraph: {
-      title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities',
+      title: 'Tiny Dev Tools - 170+ Free Online Developer Utilities',
       description,
       url: BASE_URL,
       siteName: 'Tiny Dev Tools',
@@ -95,7 +95,7 @@ export function generateBaseMetadata(): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Tiny Dev Tools - 85+ Free Online Developer Utilities',
+      title: 'Tiny Dev Tools - 170+ Free Online Developer Utilities',
       description,
       images: [`${BASE_URL}/twitter-image`],
       creator: '@tinydevtools',

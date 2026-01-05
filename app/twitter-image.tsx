@@ -56,10 +56,11 @@ export default async function Image() {
               justifyContent: 'center',
               width: '100px',
               height: '100px',
-              borderRadius: '20px',
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              borderRadius: '50px',
+              background: '#09090b',
+              border: '2px solid rgba(16, 185, 129, 0.5)',
               marginBottom: '28px',
-              boxShadow: '0 20px 40px rgba(16, 185, 129, 0.3)',
+              boxShadow: '0 0 30px rgba(16, 185, 129, 0.4)',
             }}
           >
             <svg
@@ -67,10 +68,11 @@ export default async function Image() {
               height="56"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="white"
-              strokeWidth="2"
+              stroke="#10b981"
+              strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{ filter: 'drop-shadow(0 0 6px rgba(16, 185, 129, 0.8))' }}
             >
               <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
             </svg>
@@ -85,6 +87,7 @@ export default async function Image() {
               margin: 0,
               textAlign: 'center',
               letterSpacing: '-2px',
+              textShadow: '0 4px 20px rgba(0,0,0,0.5)',
             }}
           >
             Tiny Dev Tools
@@ -97,9 +100,10 @@ export default async function Image() {
               color: '#a1a1aa',
               margin: '12px 0 0 0',
               textAlign: 'center',
+              fontWeight: 500,
             }}
           >
-            85+ Free Online Developer Utilities
+            170+ Free Online Developer Utilities
           </p>
 
           {/* Footer */}
