@@ -10,7 +10,7 @@ import clsx from 'clsx'
 // Initialize worker
 // We use a specific version to match the installed package, or a relatively recent one.
 // Since we can't easily get the version at runtime without importing package.json, we'll try to rely on the version we instaled or use a standard CDN.
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`
 
 interface PdfPage {
     pageNumber: number
