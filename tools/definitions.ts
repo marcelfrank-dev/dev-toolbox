@@ -151,6 +151,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['pdf', 'image', 'convert', 'png', 'jpeg', 'export'],
   },
   {
+    id: 'pdf-to-markdown',
+    name: 'PDF to Markdown Converter',
+    description: 'Convert PDF files to Markdown format',
+    category: 'Converters & Formatters',
+    keywords: ['pdf', 'markdown', 'convert', 'text', 'extract'],
+  },
+  {
     id: 'svg-to-png',
     name: 'SVG to PNG Converter',
     description: 'Convert SVG files or code to high-resolution PNG',
