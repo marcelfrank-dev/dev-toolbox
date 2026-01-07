@@ -27,6 +27,7 @@ const toolComponents: Record<string, ComponentType> = {
   'image-cropper': dynamic(() => import('./image/ImageCropper'), { ssr: false }),
   'image-filters': dynamic(() => import('./image/ImageFilters'), { ssr: false }),
   'color-extractor': dynamic(() => import('./image/ColorExtractor'), { ssr: false }),
+  'pdf-to-image': dynamic(() => import('./image/PdfToImage'), { ssr: false }),
   'svg-to-png': dynamic(() => import('./image/SvgToPng'), { ssr: false }),
   'exif-viewer': dynamic(() => import('./image/ExifViewer'), { ssr: false }),
   'number-base': dynamic(() => import('./number-base/NumberBaseConverter'), { ssr: false }),

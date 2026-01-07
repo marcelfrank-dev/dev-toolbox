@@ -144,6 +144,13 @@ export const toolDefinitions: ToolDefinition[] = [
     keywords: ['color', 'extract', 'palette', 'image', 'picker', 'dominant'],
   },
   {
+    id: 'pdf-to-image',
+    name: 'PDF to Image Converter',
+    description: 'Convert PDF pages to images',
+    category: 'Converters & Formatters',
+    keywords: ['pdf', 'image', 'convert', 'png', 'jpeg', 'export'],
+  },
+  {
     id: 'svg-to-png',
     name: 'SVG to PNG Converter',
     description: 'Convert SVG files or code to high-resolution PNG',
