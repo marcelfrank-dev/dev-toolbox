@@ -2,10 +2,16 @@
 
 import React, { useState, useRef, useMemo, useCallback } from 'react'
 import { Upload, Download, FileText, Trash2, Copy, Check, Type, FileUp } from 'lucide-react'
-import { saveAs } from 'file-saver'
+import { marked } from 'marked'
 import clsx from 'clsx'
 
 type InputMode = 'paste' | 'upload'
+
+// Configure marked for GFM (GitHub Flavored Markdown) with tables
+marked.setOptions({
+    gfm: true,
+    breaks: true,
+})
 
 export default function MarkdownToPdf() {
     const [mode, setMode] = useState<InputMode>('paste')
@@ -161,6 +167,7 @@ export default function MarkdownToPdf() {
                     strong { font-weight: 600; }
                     em { font-style: italic; }
                     img { max-width: 100%; height: auto; }
+                    input[type="checkbox"] { margin-right: 0.5em; }
                     @media print {
                         body { padding: 0; }
                         @page { margin: 1in; }
@@ -180,67 +187,15 @@ export default function MarkdownToPdf() {
         }, 250)
     }, [fileName])
 
-    // Markdown to HTML converter (enhanced)
+    // Parse markdown using marked library
     const previewHtml = useMemo(() => {
-        let result = markdown
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-
-        // Code blocks (must come before inline code)
-        result = result.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
-            return `<pre><code class="language-${lang}">${code.trim()}</code></pre>`
-        })
-
-        // Inline code
-        result = result.replace(/`([^`]+)`/g, '<code>$1</code>')
-
-        // Headers
-        result = result.replace(/^#### (.+)$/gm, '<h4>$1</h4>')
-        result = result.replace(/^### (.+)$/gm, '<h3>$1</h3>')
-        result = result.replace(/^## (.+)$/gm, '<h2>$1</h2>')
-        result = result.replace(/^# (.+)$/gm, '<h1>$1</h1>')
-
-        // Horizontal rules
-        result = result.replace(/^---$/gm, '<hr>')
-        result = result.replace(/^\*\*\*$/gm, '<hr>')
-
-        // Bold and Italic
-        result = result.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>')
-        result = result.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        result = result.replace(/\*([^*]+)\*/g, '<em>$1</em>')
-        result = result.replace(/__([^_]+)__/g, '<strong>$1</strong>')
-        result = result.replace(/_([^_]+)_/g, '<em>$1</em>')
-
-        // Blockquotes
-        result = result.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-
-        // Links
-        result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-
-        // Images
-        result = result.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
-
-        // Unordered lists
-        result = result.replace(/^- (.+)$/gm, '<li>$1</li>')
-        result = result.replace(/^\* (.+)$/gm, '<li>$1</li>')
-        result = result.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-
-        // Ordered lists
-        result = result.replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
-
-        // Paragraphs
-        result = result
-            .split('\n\n')
-            .map(block => {
-                const trimmed = block.trim()
-                if (!trimmed) return ''
-                if (trimmed.startsWith('<')) return block
-                return `<p>${block.replace(/\n/g, '<br>')}</p>`
-            })
-            .join('\n')
-
-        return result
+        if (!markdown) return ''
+        try {
+            return marked.parse(markdown) as string
+        } catch (err) {
+            console.error('Error parsing markdown:', err)
+            return '<p>Error parsing markdown</p>'
+        }
     }, [markdown])
 
     const sampleMarkdown = `# Sample Markdown Document
@@ -255,6 +210,20 @@ This is a **sample document** to demonstrate the Markdown to PDF converter. You 
 - Upload markdown files
 - Live preview
 - Professional formatting
+
+## Table Example
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Tables | ✅ | Full GFM support |
+| Code blocks | ✅ | Syntax highlighting |
+| Task lists | ✅ | Interactive checkboxes |
+
+## Task List
+
+- [x] Implement markdown parsing
+- [x] Add PDF export
+- [ ] Add more features
 
 ## Code Example
 
@@ -455,7 +424,8 @@ function greet(name) {
                 .markdown-preview h3 { font-size: 1.17em; font-weight: bold; margin: 0.83em 0; }
                 .markdown-preview h4 { font-size: 1em; font-weight: bold; margin: 0.83em 0; }
                 .markdown-preview p { margin: 1em 0; line-height: 1.6; }
-                .markdown-preview ul, .markdown-preview ol { list-style-type: disc; padding-left: 2em; margin: 1em 0; }
+                .markdown-preview ul, .markdown-preview ol { padding-left: 2em; margin: 1em 0; }
+                .markdown-preview ul { list-style-type: disc; }
                 .markdown-preview ol { list-style-type: decimal; }
                 .markdown-preview li { margin: 0.25em 0; }
                 .markdown-preview strong { font-weight: bold; }
@@ -492,6 +462,25 @@ function greet(name) {
                 .dark .markdown-preview hr { border-color: #334155; }
                 .markdown-preview a { color: #3b82f6; text-decoration: underline; }
                 .markdown-preview img { max-width: 100%; height: auto; border-radius: 6px; }
+                .markdown-preview table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin: 1em 0;
+                }
+                .markdown-preview th, .markdown-preview td {
+                    border: 1px solid #e2e8f0;
+                    padding: 0.5em 1em;
+                    text-align: left;
+                }
+                .dark .markdown-preview th, .dark .markdown-preview td { border-color: #334155; }
+                .markdown-preview th {
+                    background: #f8fafc;
+                    font-weight: 600;
+                }
+                .dark .markdown-preview th { background: #1e293b; }
+                .markdown-preview input[type="checkbox"] {
+                    margin-right: 0.5em;
+                }
             `}</style>
         </div>
     )
