@@ -29,6 +29,7 @@ const toolComponents: Record<string, ComponentType> = {
   'color-extractor': dynamic(() => import('./image/ColorExtractor'), { ssr: false }),
   'pdf-to-image': dynamic(() => import('./image/PdfToImage'), { ssr: false }),
   'pdf-to-markdown': dynamic(() => import('./pdf/PdfToMarkdown'), { ssr: false }),
+  'markdown-to-pdf': dynamic(() => import('./markdown-pdf/MarkdownToPdf'), { ssr: false }),
   'svg-to-png': dynamic(() => import('./image/SvgToPng'), { ssr: false }),
   'exif-viewer': dynamic(() => import('./image/ExifViewer'), { ssr: false }),
   'number-base': dynamic(() => import('./number-base/NumberBaseConverter'), { ssr: false }),
