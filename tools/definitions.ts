@@ -251,6 +251,13 @@ export const toolDefinitions: ToolDefinition[] = [
 
   // Text & Analysis
   {
+    id: 'date-duration',
+    name: 'Date Duration Calculator',
+    description: 'Calculate timeframes between dates, sum multiple periods for work experience',
+    category: 'Text & Analysis',
+    keywords: ['date', 'duration', 'time', 'period', 'work', 'experience', 'calculator', 'years', 'months'],
+  },
+  {
     id: 'text-diff',
     name: 'Text Diff/Compare',
     description: 'Compare two text inputs and show differences',

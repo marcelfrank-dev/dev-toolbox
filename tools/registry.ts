@@ -44,6 +44,7 @@ const toolComponents: Record<string, ComponentType> = {
   'markdown-html': dynamic(() => import('./markdown-html/MarkdownToHtml'), { ssr: false }),
 
   // Text & Analysis
+  'date-duration': dynamic(() => import('./date-duration/DateDurationCalculator'), { ssr: false }),
   'text-diff': dynamic(() => import('./text-diff/TextDiff'), { ssr: false }),
   'regex': dynamic(() => import('./regex/RegexTester'), { ssr: false }),
   'word-count': dynamic(() => import('./word-count/WordCounter'), { ssr: false }),
