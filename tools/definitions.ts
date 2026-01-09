@@ -248,6 +248,13 @@ export const toolDefinitions: ToolDefinition[] = [
     category: 'Converters & Formatters',
     keywords: ['markdown', 'html', 'convert', 'md', 'render'],
   },
+  {
+    id: 'less-to-css',
+    name: 'LESS to CSS Converter',
+    description: 'Convert LESS stylesheets to CSS with multi-file support',
+    category: 'Converters & Formatters',
+    keywords: ['less', 'css', 'convert', 'stylesheet', 'compile', 'variables', 'import', 'preprocessor'],
+  },
 
   // Text & Analysis
   {

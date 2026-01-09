@@ -42,6 +42,7 @@ const toolComponents: Record<string, ComponentType> = {
   'yaml-formatter': dynamic(() => import('./yaml-formatter/YamlFormatter'), { ssr: false }),
   'python-formatter': dynamic(() => import('./python-formatter/PythonFormatter'), { ssr: false }),
   'markdown-html': dynamic(() => import('./markdown-html/MarkdownToHtml'), { ssr: false }),
+  'less-to-css': dynamic(() => import('./less-css/LessToCss'), { ssr: false }),
 
   // Text & Analysis
   'date-duration': dynamic(() => import('./date-duration/DateDurationCalculator'), { ssr: false }),
