@@ -71,15 +71,21 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Prevent AdSense from overriding layout heights */
-main {
-  height: 100vh !important;
-  min-height: 100vh !important;
+/* App Layout - Uses fixed positioning to be immune to AdSense height manipulation */
+.app-layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-main > div {
-  height: 100vh !important;
-  min-height: 100vh !important;
+@media (min-width: 1024px) {
+  .app-layout {
+    flex-direction: row;
+  }
 }
 
 /* Dark theme mesh gradient background */

@@ -8,7 +8,7 @@ interface ContentAreaProps {
 
 export function ContentArea({ children }: ContentAreaProps) {
   return (
-    <div className="flex-1 overflow-y-auto bg-[var(--background)] h-full">
+    <div className="flex-1 overflow-y-auto bg-[var(--background)]">
       <div className="mx-auto min-h-full max-w-7xl">{children}</div>
     </div>
   )

@@ -68,7 +68,7 @@ export default function Home() {
   }, [activeTool])
 
   return (
-    <div className="flex h-screen flex-col lg:flex-row" style={{ height: '100vh' }}>
+    <div className="app-layout">
       <MobileHeader
         onMenuClick={() => setIsMobileSidebarOpen(true)}
         appName="Tiny Dev Tools"
