@@ -56,7 +56,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jetbrainsMono.variable} h-screen overflow-hidden antialiased bg-background text-foreground`}>
         <ThemeProvider>
           <ToastProvider>
-            <main className="h-full">{children}</main>
+            <main className="h-screen">{children}</main>
             <footer className="border-t border-[var(--border)] bg-[var(--card)]">
               <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-xs text-[var(--foreground)]/60 sm:px-6 lg:px-8">
                 <p className="hidden sm:block">
