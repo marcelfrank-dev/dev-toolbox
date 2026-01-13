@@ -181,3 +181,15 @@ body {
 .animate-float {
   animation: var(--animate-float);
 }
+
+/* AdSense Container - prevent scroll blocking */
+.ad-container {
+  position: relative;
+  z-index: 1;
+  touch-action: pan-y;
+}
+
+.ad-container ins.adsbygoogle {
+  touch-action: pan-y;
+}
+
