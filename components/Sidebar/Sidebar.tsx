@@ -189,7 +189,7 @@ export function Sidebar({ tools, activeToolId, onToolClick, isMobileOpen, onMobi
           </div>
 
           {/* Navigation */}
-          <nav className="flex min-h-0 flex-1 flex-col px-2 overflow-hidden">
+          <nav className="flex min-h-0 flex-1 flex-col px-2 overflow-y-auto">
             {categories
               .filter((category) => toolsByCategory[category]?.length > 0)
               .map((category) => (
