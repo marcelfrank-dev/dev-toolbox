@@ -10,6 +10,7 @@ import { StructuredData } from '@/components/StructuredData'
 import { CookieConsentBanner } from '@/components/CookieConsentBanner'
 import { ErrorSuppressor } from '@/components/ErrorSuppressor'
 import { FeedbackButton } from '@/components/Feedback/FeedbackButton'
+import { AdBlockDismissal } from '@/components/Ads/AdBlockDismissal'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -74,6 +75,7 @@ export default function RootLayout({
               </div>
             </footer>
             <FeedbackButton />
+            <AdBlockDismissal />
           </ToastProvider>
           <CookieConsentBanner />
           <ErrorSuppressor />
