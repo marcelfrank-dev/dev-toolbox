@@ -52,6 +52,59 @@ export default function RootLayout({
             crossOrigin="anonymous"
           />
         )}
+        {/* Fix for AdSense injecting height: auto !important */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function fixHeight() {
+                  var main = document.querySelector('main');
+                  var mainChild = main ? main.firstElementChild : null;
+                  if (main && main.style.height === 'auto') {
+                    main.style.setProperty('height', '100vh', 'important');
+                  }
+                  if (mainChild && mainChild.style && mainChild.style.height === 'auto') {
+                    mainChild.style.setProperty('height', '100vh', 'important');
+                  }
+                }
+                
+                // Run on DOMContentLoaded and after a delay (for async AdSense)
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', function() {
+                    fixHeight();
+                    setTimeout(fixHeight, 500);
+                    setTimeout(fixHeight, 1000);
+                    setTimeout(fixHeight, 2000);
+                  });
+                } else {
+                  fixHeight();
+                  setTimeout(fixHeight, 500);
+                  setTimeout(fixHeight, 1000);
+                  setTimeout(fixHeight, 2000);
+                }
+                
+                // Use MutationObserver to catch any changes
+                var observer = new MutationObserver(function(mutations) {
+                  mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                      fixHeight();
+                    }
+                  });
+                });
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                  var main = document.querySelector('main');
+                  if (main) {
+                    observer.observe(main, { attributes: true, attributeFilter: ['style'] });
+                    if (main.firstElementChild) {
+                      observer.observe(main.firstElementChild, { attributes: true, attributeFilter: ['style'] });
+                    }
+                  }
+                });
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} h-screen overflow-hidden antialiased bg-background text-foreground`}>
         <ThemeProvider>

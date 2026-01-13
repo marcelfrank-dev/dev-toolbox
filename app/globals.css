@@ -71,6 +71,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Prevent AdSense from overriding layout heights */
+main {
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
+main > div {
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
+
 /* Dark theme mesh gradient background */
 :root:not(.light) body {
   background-image: 
