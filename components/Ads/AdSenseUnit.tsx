@@ -21,8 +21,9 @@ export function AdSenseUnit({
     responsive = true,
     className = '',
 }: AdSenseUnitProps) {
-    const adRef = useRef<HTMLModElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
     const [adError, setAdError] = useState(false)
+    const [allowInteraction, setAllowInteraction] = useState(false)
 
     useEffect(() => {
         // Check if publisher ID is configured
@@ -40,6 +41,37 @@ export function AdSenseUnit({
         }
     }, [slot])
 
+    // Handle scroll events to disable pointer events during scroll
+    useEffect(() => {
+        let scrollTimeout: NodeJS.Timeout
+
+        const handleScroll = () => {
+            // Disable interaction during scroll
+            setAllowInteraction(false)
+
+            // Re-enable after scrolling stops
+            clearTimeout(scrollTimeout)
+            scrollTimeout = setTimeout(() => {
+                setAllowInteraction(true)
+            }, 150)
+        }
+
+        // Enable interaction after initial load
+        const enableTimeout = setTimeout(() => {
+            setAllowInteraction(true)
+        }, 1000)
+
+        window.addEventListener('scroll', handleScroll, true)
+        window.addEventListener('touchmove', handleScroll, true)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll, true)
+            window.removeEventListener('touchmove', handleScroll, true)
+            clearTimeout(scrollTimeout)
+            clearTimeout(enableTimeout)
+        }
+    }, [])
+
     // Don't render anything if there's an error or no slot configured
     if (adError || !slot) {
         return null
@@ -48,9 +80,14 @@ export function AdSenseUnit({
     const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
     return (
-        <div className={`ad-container ${className}`}>
+        <div
+            ref={containerRef}
+            className={`ad-container ${className}`}
+            style={{
+                pointerEvents: allowInteraction ? 'auto' : 'none',
+            }}
+        >
             <ins
-                ref={adRef}
                 className="adsbygoogle"
                 style={{
                     display: 'block',

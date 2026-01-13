@@ -182,14 +182,16 @@ body {
   animation: var(--animate-float);
 }
 
-/* AdSense Container - prevent scroll blocking */
+/* AdSense Container - prevent scroll blocking while keeping ads clickable */
 .ad-container {
   position: relative;
   z-index: 1;
-  touch-action: pan-y;
+  pointer-events: none;
 }
 
-.ad-container ins.adsbygoogle {
-  touch-action: pan-y;
+.ad-container ins.adsbygoogle,
+.ad-container iframe {
+  pointer-events: auto;
 }
+
 
