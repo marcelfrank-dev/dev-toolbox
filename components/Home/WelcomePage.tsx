@@ -18,7 +18,7 @@ export function WelcomePage({ tools, onToolClick }: WelcomePageProps) {
   const [hasActiveSearch, setHasActiveSearch] = useState(false)
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden bg-transparent">
+    <div className="flex min-h-screen flex-col overflow-y-auto overflow-x-hidden bg-transparent">
       {/* Top Banner - ClipStack */}
       <ClipStackBanner />
 
