@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { CopyButton } from '@/components/CopyButton'
 
-const TIMEZONES = [
+const FALLBACK_TIMEZONES = [
   'UTC',
   'America/New_York',
   'America/Chicago',
@@ -17,6 +17,48 @@ const TIMEZONES = [
   'Asia/Dubai',
   'Australia/Sydney',
 ]
+
+function getAvailableTimezones(): string[] {
+  if (typeof Intl !== 'undefined' && 'supportedValuesOf' in Intl) {
+    const zones = (Intl as unknown as { supportedValuesOf: (type: string) => string[] }).supportedValuesOf(
+      'timeZone'
+    )
+    return zones.includes('UTC') ? zones : ['UTC', ...zones]
+  }
+  return FALLBACK_TIMEZONES
+}
+
+function getOffsetMinutes(date: Date, timeZone: string): number {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour12: false,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })
+  const parts = formatter.formatToParts(date)
+  const lookup = Object.fromEntries(parts.map((part) => [part.type, part.value]))
+  const year = Number(lookup.year)
+  const month = Number(lookup.month)
+  const day = Number(lookup.day)
+  const hour = Number(lookup.hour)
+  const minute = Number(lookup.minute)
+  const second = Number(lookup.second)
+  const asUtc = Date.UTC(year, month - 1, day, hour, minute, second)
+  return Math.round((asUtc - date.getTime()) / 60000)
+}
+
+function formatOffsetLabel(minutes: number): string {
+  if (minutes === 0) return 'UTC'
+  const sign = minutes > 0 ? '+' : '-'
+  const absMinutes = Math.abs(minutes)
+  const hours = Math.floor(absMinutes / 60)
+  const mins = absMinutes % 60
+  return `UTC${sign}${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`
+}
 
 function convertTimezone(dateStr: string, fromTz: string, toTz: string): string {
   try {
@@ -45,6 +87,12 @@ export default function TimezoneConverter() {
   const [toTz, setToTz] = useState('America/New_York')
 
   const output = dateStr ? convertTimezone(dateStr, fromTz, toTz) : ''
+  const dateForOffsets = Number.isNaN(new Date(dateStr).getTime()) ? new Date() : new Date(dateStr)
+  const availableTimezones = getAvailableTimezones()
+  const timezoneOptions = availableTimezones.map((tz) => ({
+    tz,
+    label: `${tz} (${formatOffsetLabel(getOffsetMinutes(dateForOffsets, tz))})`,
+  }))
 
   const clear = () => {
     setDateStr(new Date().toISOString().slice(0, 16))
@@ -78,9 +126,9 @@ export default function TimezoneConverter() {
             onChange={(e) => setFromTz(e.target.value)}
             className="rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-sm text-zinc-200 focus:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500/20"
           >
-            {TIMEZONES.map((tz) => (
+            {timezoneOptions.map(({ tz, label }) => (
               <option key={tz} value={tz}>
-                {tz}
+                {label}
               </option>
             ))}
           </select>
@@ -95,9 +143,9 @@ export default function TimezoneConverter() {
             onChange={(e) => setToTz(e.target.value)}
             className="rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-sm text-zinc-200 focus:border-zinc-600 focus:outline-none focus:ring-2 focus:ring-zinc-500/20"
           >
-            {TIMEZONES.map((tz) => (
+            {timezoneOptions.map(({ tz, label }) => (
               <option key={tz} value={tz}>
-                {tz}
+                {label}
               </option>
             ))}
           </select>
